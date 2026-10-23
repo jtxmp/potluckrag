@@ -8,6 +8,10 @@ PotluckRAG is a CLI for retrieval-augmented question answering across documents 
 
 It uses the same identity and `team.json` format as [PotluckLLM](https://github.com/jtxmp/potluckllm).
 
+![Demo: bob asks how to roll back a release; the answer cites alice's runbook; alice's audit log shows the passages sent](demo/demo.gif)
+
+*Alice (host network) shares a runbook. Bob (separate simulated network: own NAT, 80 ms delay, 1% loss, via `scripts/simnet.sh`) asks a question. The answer cites alice's file, and `potluckrag log` on alice's machine lists the passages bob received. Real output from `nomic-embed-text:v1.5` and `llama3.2:3b`. Reproduce with `vhs demo/demo.tape`.*
+
 ## Who it is for
 
 - Small teams whose notes, specs and runbooks are on members' own machines and should not be copied to a shared server.
@@ -173,7 +177,7 @@ Central minus federated: recall@5 +0.036 (95% bootstrap interval -0.036 to +0.12
 - Text, Markdown and code only. No PDF or Word.
 - Vector search is a full scan; time and memory grow linearly with passages.
 - While a member is offline, the others repeat the DHT lookup once a minute.
-- Small chat models can cite the wrong `[n]`. The printed source list is correct.
+- Small chat models can cite the wrong `[n]`, and `llama3.2:3b` sometimes answered with only `[1]` (2 of 4 demo recordings; not reproduced in 24 scripted runs). The printed source list is correct in both cases.
 - `search_query:` / `search_document:` prefixes for `nomic-embed-text` are not added.
 - Tested on Linux only.
 - No relay fallback; networks that block hole punching cannot connect.
