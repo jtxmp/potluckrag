@@ -2,7 +2,7 @@
   "name": "potluckrag",
   "version": "0.0.0",
   "private": true,
-  "description": "Ask questions across your team's documents without moving them, peer-to-peer.",
+  "description": "Federated RAG over Hyperswarm. Ask questions across teammates' documents without moving them.",
   "license": "MIT",
   "author": "JT (https://github.com/jtxmp)",
   "type": "module",
