@@ -114,8 +114,11 @@ export function buildMessages (query, hits) {
  * @returns {Promise<string>}
  */
 export async function streamAnswer ({ url, model, messages, apiKey, onToken, timeoutMs = 120000, signal }) {
-  const timeout = AbortSignal.timeout(timeoutMs)
-  const combined = signal ? AbortSignal.any([signal, timeout]) : timeout
+  // A plain timer rather than AbortSignal.timeout(). With the latter, a
+  // stalled stream once hung past its timeout in CI on macOS.
+  const timeout = new AbortController()
+  const timer = setTimeout(() => timeout.abort(), timeoutMs)
+  const combined = signal ? AbortSignal.any([signal, timeout.signal]) : timeout.signal
   /** @type {Record<string, string>} */
   const headers = { 'content-type': 'application/json', accept: 'text/event-stream' }
   if (apiKey) headers.authorization = `Bearer ${apiKey}`
@@ -168,10 +171,12 @@ export async function streamAnswer ({ url, model, messages, apiKey, onToken, tim
     if (buffer) handle(buffer.replace(/\r$/, ''))
     return answer
   } catch (err) {
-    if (timeout.aborted) throw new Error(`chat request timed out after ${timeoutMs / 1000} s`)
+    if (timeout.signal.aborted) throw new Error(`chat request timed out after ${timeoutMs / 1000} s`)
     if (signal?.aborted) throw new Error('chat request cancelled')
     if (err.message?.startsWith('chat ')) throw err
     throw new Error(`chat request failed: ${err.cause?.code || err.message}`)
+  } finally {
+    clearTimeout(timer)
   }
 }
 

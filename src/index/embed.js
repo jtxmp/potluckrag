@@ -21,18 +21,33 @@ export function createEmbedder ({ url = 'http://127.0.0.1:11434', model, timeout
 
   /** @param {string[]} input */
   async function embedBatch (input) {
+    // A plain timer rather than AbortSignal.timeout(), as in streamAnswer
+    // (src/ask.js). It covers reading the body too.
+    const timeout = new AbortController()
+    const timer = setTimeout(() => timeout.abort(), timeoutMs)
+    try {
+      return await request(input, timeout.signal)
+    } finally {
+      clearTimeout(timer)
+    }
+  }
+
+  /**
+   * @param {string[]} input
+   * @param {AbortSignal} signal
+   */
+  async function request (input, signal) {
+    const timedOut = () => new Error(`embeddings request to ${where} timed out after ${timeoutMs} ms`)
     let res
     try {
       res = await fetch(endpoint, {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
         body: JSON.stringify({ model, input }),
-        signal: AbortSignal.timeout(timeoutMs)
+        signal
       })
     } catch (err) {
-      if (err.name === 'TimeoutError' || err.name === 'AbortError') {
-        throw new Error(`embeddings request to ${where} timed out after ${timeoutMs} ms`)
-      }
+      if (signal.aborted) throw timedOut()
       throw new Error(`embeddings request to ${where} failed: ${err.cause?.code ?? err.message}`)
     }
     // The body is not quoted in errors: some servers echo the input back.
@@ -44,6 +59,7 @@ export function createEmbedder ({ url = 'http://127.0.0.1:11434', model, timeout
     try {
       body = await res.json()
     } catch {
+      if (signal.aborted) throw timedOut()
       throw new Error(`embeddings response from ${where} is not valid JSON`)
     }
     const data = body?.data
