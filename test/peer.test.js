@@ -151,6 +151,17 @@ describe('federated search', () => {
     }
   })
 
+  test('two members that start at the same moment connect to each other, not only to an earlier one', async () => {
+    // b and c each find a, which announced earlier, but miss each other.
+    // With one connection each, they must keep looking up until the whole
+    // team is connected.
+    const ids = [identity(), identity(), identity()]
+    const t = team(ids)
+    const pa = await peer(ids[0], t)
+    const [pb, pc] = await Promise.all([peer(ids[1], t), peer(ids[2], t)])
+    await waitFor(() => [pa, pb, pc].every((p) => p.node.members().length === 2), 30000)
+  }, 40000)
+
   test('a key outside the team is rejected and gets no hits', async () => {
     const [a, x] = [identity(), identity()]
     const topic = crypto.randomBytes(32).toString('hex')

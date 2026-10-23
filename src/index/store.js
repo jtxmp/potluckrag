@@ -66,7 +66,7 @@ export function openStore (file) {
     countFiles: db.prepare('SELECT count(*) AS n FROM files'),
     countChunks: db.prepare('SELECT count(*) AS n FROM chunks'),
     keyword: db.prepare('SELECT rowid AS id, bm25(chunks_fts) AS rank FROM chunks_fts WHERE chunks_fts MATCH ? ORDER BY rank LIMIT ?'),
-    vectors: db.prepare('SELECT id, vector FROM chunks'),
+    vectors: db.prepare('SELECT id, path, vector FROM chunks'),
     chunksById: db.prepare('SELECT id, path, start_line, end_line, title, text FROM chunks WHERE id IN (SELECT value FROM json_each(?))'),
     getMeta: db.prepare('SELECT value FROM meta WHERE key = ?'),
     setMeta: db.prepare('INSERT INTO meta (key, value) VALUES (?, ?) ON CONFLICT (key) DO UPDATE SET value = excluded.value')
@@ -90,17 +90,46 @@ export function openStore (file) {
     q.delChunks.run(filePath)
   }
 
+  // Vectors stay in memory, mirrored from the chunks table. Decoding them
+  // from SQLite on every query was 5 to 6 times slower (spike/RESULTS.md).
+  /** @type {Map<number, Float32Array>} */
+  const vectors = new Map()
+  /** @type {Map<string, number[]>} */
+  const idsByPath = new Map()
+  for (const row of q.vectors.iterate()) {
+    const id = Number(row.id)
+    vectors.set(id, fromBlob(/** @type {Uint8Array} */ (row.vector)))
+    const ids = idsByPath.get(String(row.path)) ?? []
+    ids.push(id)
+    idsByPath.set(String(row.path), ids)
+  }
+
+  /** @param {string} filePath */
+  function forgetVectors (filePath) {
+    for (const id of idsByPath.get(filePath) ?? []) vectors.delete(id)
+    idsByPath.delete(filePath)
+  }
+
   return {
     upsertFile ({ path: filePath, hash, chunks }) {
-      const rows = chunks.map((c) => ({ ...c, blob: toBlob(normalize(c.vector)) }))
+      const rows = chunks.map((c) => {
+        const vector = normalize(c.vector)
+        return { ...c, vector, blob: toBlob(vector) }
+      })
+      /** @type {[number, Float32Array][]} */
+      const added = []
       transaction(() => {
         deleteFileRows(filePath)
         q.putFile.run(filePath, hash)
         for (const c of rows) {
           const { lastInsertRowid } = q.putChunk.run(filePath, c.startLine, c.endLine, c.title, c.text, c.blob)
           q.putFts.run(lastInsertRowid, c.title, c.text)
+          added.push([Number(lastInsertRowid), c.vector])
         }
       })
+      forgetVectors(filePath)
+      for (const [id, vector] of added) vectors.set(id, vector)
+      idsByPath.set(filePath, added.map(([id]) => id))
     },
 
     removeFile (filePath) {
@@ -108,6 +137,7 @@ export function openStore (file) {
         deleteFileRows(filePath)
         q.delFile.run(filePath)
       })
+      forgetVectors(filePath)
     },
 
     fileHash (filePath) {
@@ -134,13 +164,12 @@ export function openStore (file) {
       const query = normalize(vector)
       /** @type {{ id: number, score: number }[]} */
       const top = []
-      for (const row of q.vectors.iterate()) {
-        const stored = fromBlob(/** @type {Uint8Array} */ (row.vector))
+      for (const [id, stored] of vectors) {
         // Vectors from a different model or dimension can't be compared.
         if (stored.length !== query.length) continue
         let dot = 0
         for (let i = 0; i < query.length; i++) dot += query[i] * stored[i]
-        insertTop(top, { id: Number(row.id), score: dot }, n)
+        insertTop(top, { id, score: dot }, n)
       }
       return top
     },

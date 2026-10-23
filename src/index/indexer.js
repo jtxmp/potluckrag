@@ -39,8 +39,8 @@ const DEBOUNCE_MS = 300
 export function createIndex ({ dirs, dbFile, embedder, log, watch = false }) {
   const roots = assignRoots(dirs)
   const store = openStore(dbFile)
-  /** @type {fs.FSWatcher[]} */
-  const watchers = []
+  /** @type {Map<Root, fs.FSWatcher>} */
+  const watchers = new Map()
   /** @type {Map<Root, Set<string>>} */
   const pending = new Map()
   /** @type {NodeJS.Timeout | null} */
@@ -194,10 +194,31 @@ export function createIndex ({ dirs, dbFile, embedder, log, watch = false }) {
   }
 
   /**
+   * (Re)starts the recursive watch on a root. Node on Linux stops reporting
+   * changes inside a folder once it is renamed or moved into the root, so a
+   * folder that appears gets the watch restarted before it is walked.
+   *
+   * @param {Root} root
+   */
+  function startWatch (root) {
+    if (closed) return
+    watchers.get(root)?.close()
+    watchers.delete(root)
+    try {
+      const watcher = fs.watch(root.real, { recursive: true }, (_event, filename) => onChange(root, filename))
+      watcher.on('error', (err) => log('index-watch-error', { root: root.name, error: describe(err) }))
+      watchers.set(root, watcher)
+    } catch (err) {
+      log('index-watch-error', { root: root.name, error: describe(err) })
+    }
+  }
+
+  /**
    * @param {Root} root
    * @param {string} rel
+   * @param {Set<Root>} [rewatched] roots whose watch was restarted in this batch
    */
-  async function updatePath (root, rel) {
+  async function updatePath (root, rel, rewatched = new Set()) {
     const key = `${root.name}/${rel}`
     if (isIgnored(rel, root.patterns)) {
       if (store.fileHash(key) !== undefined) removeStale(key)
@@ -208,10 +229,20 @@ export function createIndex ({ dirs, dbFile, embedder, log, watch = false }) {
       stat = await fsp.lstat(path.join(root.real, ...rel.split('/')))
     } catch {
       removeStale(key)
+      // `rm -r` can report only some of the files it removed and nothing for
+      // the folder itself (spike/RESULTS.md), so check the parent too.
+      const slash = rel.lastIndexOf('/')
+      if (slash > 0) await updatePath(root, rel.slice(0, slash), rewatched)
       return
     }
     const seen = new Set()
-    if (stat.isDirectory()) await walk(root, rel, seen)
+    if (stat.isDirectory()) {
+      if (watch && !rewatched.has(root)) {
+        rewatched.add(root)
+        startWatch(root)
+      }
+      await walk(root, rel, seen)
+    }
     else if ((stat.isFile() || stat.isSymbolicLink()) && isIndexable(rel)) await indexFile(root, rel, seen)
     removeStale(key, seen)
   }
@@ -226,9 +257,10 @@ export function createIndex ({ dirs, dbFile, embedder, log, watch = false }) {
         if (!closed) removeStale(root.name, seen)
         continue
       }
+      const rewatched = new Set()
       for (const rel of rels) {
         if (closed) return
-        await updatePath(root, rel)
+        await updatePath(root, rel, rewatched)
       }
     }
   }
@@ -257,15 +289,7 @@ export function createIndex ({ dirs, dbFile, embedder, log, watch = false }) {
 
   const ready = enqueue(initialScan).then(() => {
     if (!watch || closed) return
-    for (const root of roots) {
-      try {
-        const watcher = fs.watch(root.real, { recursive: true }, (_event, filename) => onChange(root, filename))
-        watcher.on('error', (err) => log('index-watch-error', { root: root.name, error: describe(err) }))
-        watchers.push(watcher)
-      } catch (err) {
-        log('index-watch-error', { root: root.name, error: describe(err) })
-      }
-    }
+    for (const root of roots) startWatch(root)
   })
   ready.catch(() => {})
 
@@ -286,7 +310,8 @@ export function createIndex ({ dirs, dbFile, embedder, log, watch = false }) {
       if (closed) return
       closed = true
       if (timer) clearTimeout(timer)
-      for (const watcher of watchers) watcher.close()
+      for (const watcher of watchers.values()) watcher.close()
+      watchers.clear()
       await chain
       store.close()
     }

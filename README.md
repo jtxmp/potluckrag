@@ -163,13 +163,26 @@ Limits: 28 questions written by the person who built the system, one embedding m
 
 Two `share` processes with separate identities, the `alice` and `bob` eval corpora, real Ollama models, connected through the public HyperDHT on 2026-10-23. One question with `-k 4`: the search across both members took 108 ms (daemon log `search ... ms=108`), and the whole `ask` command, including the `llama3.2:3b` answer on an RTX 3050 Ti Laptop GPU, took 5.1 s. One run only; both processes shared one network, so this does not measure a real network path.
 
-<!-- SPIKE -->
+### Search speed and connection time
+
+Measured 2026-10-23 on an i7-11600H with Node 22.22.2. Scripts and raw output are in [`spike/`](spike/RESULTS.md).
+
+| Passages in one member's index | Median vector search, 768 dimensions | Memory for vectors |
+|---|---|---|
+| 10,000 | 8 ms | 30 MiB |
+| 50,000 | 39 ms | 147 MiB |
+| 100,000 | 78 ms | 293 MiB |
+
+Vectors are loaded from SQLite into memory when `share` starts. Reading them from SQLite on every search was 5 to 6 times slower in the same test. The eval corpus of 20 READMEs makes 585 passages, so 100,000 passages corresponds to a few thousand documents of that size.
+
+Two members on one machine found each other through the public HyperDHT in a median of 4.3 s (3 runs). Members that join at the same moment can miss each other's announcements, so each member looks up the topic again with backoff (5 s, up to 60 s) for as long as any team member is not connected.
 
 ## Limits
 
 - Members who are offline cannot answer, and their documents are not cached anywhere. This is the cost of keeping documents on their owners' machines.
 - Text, Markdown and code only. PDF and Word files are not indexed.
-- Vector search compares the question against every stored passage, so search time grows with the size of the shared folders.
+- Vector search compares the question against every stored passage, so search time grows with the size of the shared folders: about 78 ms and 293 MiB at 100,000 passages.
+- A member that stays offline makes every other member look up the topic once a minute.
 - Small models can cite the wrong source number. In one test run, `llama3.2:3b` cited `[3]` for text that came from `[2]`. The printed source list is correct; the citation in the answer text may not be.
 - `nomic-embed-text` is trained with `search_query:` and `search_document:` prefixes, which PotluckRAG does not add yet.
 - Tested on Linux only. Windows and macOS are untested.

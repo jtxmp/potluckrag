@@ -350,14 +350,17 @@ export async function startPeer ({ seed, team, bootstrap, index, embedModel, aud
   const discovery = swarm.join(team.topic, { server: true, client: true })
 
   // Hyperswarm repeats its topic lookup only every 10 minutes, so a member
-  // that starts before the others have announced would wait that long. While
-  // nobody is connected, look up again with backoff.
+  // that starts before the others have announced would wait that long, and
+  // members that join at the same moment never find each other
+  // (spike/RESULTS.md). While any team member is not connected, look up again
+  // with backoff.
   let lookupDelay = MIN_LOOKUP_MS
   /** @type {NodeJS.Timeout | undefined} */
   let lookupTimer
   function lookupAgain () {
     if (closed) return
-    if (remotes.size === 0) {
+    const self = publicKey.toString('hex')
+    if (team.members.some((m) => m.key !== self && !remotes.has(m.key))) {
       discovery.refresh().catch((err) => log('lookup-error', { err: err.message }))
       lookupDelay = Math.min(lookupDelay * 2, MAX_LOOKUP_MS)
     } else {

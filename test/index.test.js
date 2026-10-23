@@ -346,6 +346,40 @@ describe('indexer', () => {
     expect(events.some((e) => e.event === 'index-remove' && e.fields.path === `${rootName}/sub/c.md`)).toBe(true)
   })
 
+  test('watch handles renaming and removing a folder with several files', async () => {
+    const root = tmp()
+    writeFiles(root, { 'keep.md': 'kept', 'd/x.md': 'xylophone', 'd/y.md': 'yak', 'd/e/z.md': 'zebra' })
+    const { index } = makeIndex([root], { watch: true })
+    await index.ready
+    const rootName = path.basename(fs.realpathSync(root))
+    const paths = async () => (await index.search('xylophone yak zebra kept', 10)).map((h) => h.path).sort()
+
+    fs.renameSync(path.join(root, 'd'), path.join(root, 'd2'))
+    await waitFor(async () => (await paths()).join() === ['d2/e/z.md', 'd2/x.md', 'd2/y.md', 'keep.md'].map((p) => `${rootName}/${p}`).join())
+    expect(index.stats().files).toBe(4)
+
+    fs.rmSync(path.join(root, 'd2'), { recursive: true })
+    await waitFor(() => index.stats().files === 1)
+    expect(await paths()).toEqual([`${rootName}/keep.md`])
+  })
+
+  test('vectors survive reopening the store and leave with their file', () => {
+    const file = path.join(tmp(), 'index.db')
+    const vector = new Float32Array([1, 0, 0])
+    let store = openStore(file)
+    store.upsertFile({ path: 'n/a.md', hash: 'h', chunks: [{ startLine: 1, endLine: 1, title: 'a', text: 'a', vector }] })
+    store.upsertFile({ path: 'n/b.md', hash: 'h', chunks: [{ startLine: 1, endLine: 1, title: 'b', text: 'b', vector: new Float32Array([0, 1, 0]) }] })
+    store.close()
+    store = openStore(file)
+    const [top] = store.vectorSearch(vector, 1)
+    expect(store.getChunks([top.id])[0].path).toBe('n/a.md')
+    store.removeFile('n/a.md')
+    expect(store.vectorSearch(vector, 5).map((r) => store.getChunks([r.id])[0].path)).toEqual(['n/b.md'])
+    store.upsertFile({ path: 'n/b.md', hash: 'h2', chunks: [{ startLine: 1, endLine: 1, title: 'b', text: 'b', vector }] })
+    expect(store.vectorSearch(vector, 5)).toHaveLength(1)
+    store.close()
+  })
+
   test('a symlink that points outside the shared root is not indexed', async () => {
     const outside = tmp()
     writeFiles(outside, { 'secret.md': 'quokka outside secret', 'dir/inner.md': 'quokka in linked dir' })
