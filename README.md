@@ -196,6 +196,10 @@ node eval/compare.js eval/results/<file>.json      # bootstrap interval between 
 git config core.hooksPath .githooks                # gitleaks pre-commit scan
 ```
 
+## Contributing
+
+Open issues are the roadmap; [`good first issue`](https://github.com/jtxmp/potluckrag/labels/good%20first%20issue) marks small ones. [CONTRIBUTING.md](CONTRIBUTING.md) has setup, a code map and the house rules. Questions go in [Discussions](https://github.com/jtxmp/potluckrag/discussions).
+
 ## License
 
 MIT. The files in `eval/corpus/` are third-party documentation under their own licenses; see [eval/corpus/SOURCES.md](eval/corpus/SOURCES.md).
