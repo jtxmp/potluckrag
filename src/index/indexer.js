@@ -287,10 +287,11 @@ export function createIndex ({ dirs, dbFile, embedder, log, watch = false }) {
     timer = setTimeout(flush, DEBOUNCE_MS)
   }
 
-  const ready = enqueue(initialScan).then(() => {
-    if (!watch || closed) return
-    for (const root of roots) startWatch(root)
-  })
+  // Watch before scanning, so a change made during the scan, or just after it
+  // while the watcher starts (slow with FSEvents on macOS), is not lost.
+  // Events queue behind the scan; unchanged files are skipped by hash.
+  if (watch) for (const root of roots) startWatch(root)
+  const ready = enqueue(initialScan)
   ready.catch(() => {})
 
   return {
