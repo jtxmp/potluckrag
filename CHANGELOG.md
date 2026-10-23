@@ -2,6 +2,10 @@
 
 All notable changes are listed here. Versions follow [Semantic Versioning](https://semver.org/).
 
+## 0.1.1 (2026-10-23)
+
+- Chat and embedding requests now time out reliably. A stalled chat stream hung past its timeout in a macOS CI run. Both clients now use a plain timer, and the embeddings timeout also covers reading the response body ([#14](https://github.com/jtxmp/potluckrag/pull/14)).
+
 ## 0.1.0 (2026-10-23)
 
 First release.
