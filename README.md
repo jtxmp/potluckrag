@@ -179,7 +179,7 @@ Central minus federated: recall@5 +0.036 (95% bootstrap interval -0.036 to +0.12
 - While a member is offline, the others repeat the DHT lookup once a minute.
 - Small chat models can cite the wrong `[n]`, and `llama3.2:3b` sometimes answered with only `[1]` (2 of 4 demo recordings; not reproduced in 24 scripted runs). The printed source list is correct in both cases.
 - `search_query:` / `search_document:` prefixes for `nomic-embed-text` are not added.
-- Tested on Linux only.
+- Tests pass on Linux and macOS in CI. Manual runs with Ollama were on Linux only. Windows is untested.
 - No relay fallback; networks that block hole punching cannot connect.
 
 ## Development
