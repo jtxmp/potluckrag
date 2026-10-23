@@ -252,6 +252,24 @@ describe('embedder', () => {
     expect(err.message).toContain('m1')
     expect(err.message).not.toContain('private words')
   })
+
+  test('times out when the server stalls in the middle of the body', async () => {
+    const http = await import('node:http')
+    const server = http.createServer((req, res) => {
+      req.resume()
+      res.writeHead(200, { 'content-type': 'application/json' })
+      res.write('{"data": [')
+    })
+    await new Promise((resolve) => server.listen(0, '127.0.0.1', () => resolve(undefined)))
+    const { port } = /** @type {import('node:net').AddressInfo} */ (server.address())
+    try {
+      const embedder = createEmbedder({ url: `http://127.0.0.1:${port}`, model: 'm', timeoutMs: 300 })
+      await expect(embedder.embed(['x'])).rejects.toThrow(/timed out after 300 ms/)
+    } finally {
+      server.closeAllConnections()
+      await new Promise((resolve) => server.close(() => resolve(undefined)))
+    }
+  })
 })
 
 describe('indexer', () => {
