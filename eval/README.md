@@ -31,7 +31,7 @@ node --no-warnings eval/run.js --url http://127.0.0.1:11999 --model fake-embed
 
 ## Modes
 
-All three modes use only the module contracts in `docs/contracts.md`: `createEmbedder`, `createIndex` (`watch: false`), `Index.search` and `rescore` from `src/ask.js`.
+All three modes use only the modules' public functions: `createEmbedder`, `createIndex` (`watch: false`), `Index.search` and `rescore` from `src/ask.js`.
 
 - `central`: one index over the three member folders. `search(question, 5)`.
 - `federated`: one index per member. Each returns its top `k` snippets with scores removed, as on the wire. The asker merges them and calls `rescore` with the same embedding model, keeping the top 5. This is what `potluckrag ask` does.

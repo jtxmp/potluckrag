@@ -2,7 +2,7 @@
 import { StringDecoder } from 'node:string_decoder'
 
 // Newline-delimited JSON over one Hyperswarm connection between two team
-// members (docs/contracts.md, "Wire protocol"). Every member is both asker
+// members. Every member is both asker
 // and answerer.
 //
 // both ways         { t: 'hello', name, chunks, embedModel }

@@ -4,7 +4,7 @@
 //
 //   node --no-warnings eval/run.js [--url http://127.0.0.1:11434] [--model nomic-embed-text:v1.5] [--k 8]
 //
-// Uses only the contract APIs (docs/contracts.md): createEmbedder,
+// Uses only the public module functions: createEmbedder,
 // createIndex, Index.search and rescore.
 import fs from 'node:fs'
 import os from 'node:os'

@@ -41,3 +41,5 @@ eval/results/*.tmp
 
 # kept local
 AI-WORKFLOW.md
+docs/PRD.md
+docs/contracts.md
