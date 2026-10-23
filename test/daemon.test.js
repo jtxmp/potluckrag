@@ -34,7 +34,7 @@ afterAll(async () => {
 /**
  * @param {Record<string, Record<string, string>>} docs member name -> file name -> content
  */
-async function startTeam (docs) {
+async function startTeam (docs, { apiKey } = {}) {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), 'potluckrag-test-'))
   cleanup.push(async () => fs.rmSync(root, { recursive: true, force: true }))
   const members = Object.keys(docs).map((name) => {
@@ -57,6 +57,7 @@ async function startTeam (docs) {
       embedUrl: fake.url,
       embedModel: EMBED_MODEL,
       port: 0,
+      apiKey,
       bootstrap: testnet.bootstrap,
       watch: false,
       log: () => {}
@@ -131,6 +132,14 @@ describe('local endpoint', () => {
     expect((await post({ 'content-type': 'application/json' }, JSON.stringify({ q: 'x'.repeat(2001) }))).status).toBe(400)
     expect(await rawStatus(port, 'evil.example')).toBe(421)
   })
+})
+
+test('with an API key set, requests without it get 401', async () => {
+  const { daemons } = await startTeam({ alice: DOCS.alice }, { apiKey: 'sesame' })
+  const url = `http://127.0.0.1:${daemons.alice.port}/status`
+  expect((await fetch(url)).status).toBe(401)
+  expect((await fetch(url, { headers: { authorization: 'Bearer wrong' } })).status).toBe(401)
+  expect((await fetch(url, { headers: { authorization: 'Bearer sesame' } })).status).toBe(200)
 })
 
 describe('cli', () => {

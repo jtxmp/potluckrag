@@ -28,3 +28,5 @@ README.md files from Holepunch repositories, fetched 2026-10-23 from raw.githubu
 Excluded: `corestore` (GitHub API reports no license, `license: null`). `secret-stream` returned 404; the package lives in `hyperswarm-secret-stream`, included above.
 
 README content is third-party documentation, used here as test data only.
+
+Each repository's license file, fetched at the same commit, is in [`licenses/`](licenses/). The files are redistributed under those licenses.

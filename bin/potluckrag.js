@@ -42,7 +42,7 @@ Options:
                          PotluckLLM's 'potluck use' endpoint works: http://127.0.0.1:11500
   --chat-model <name>    Chat model for 'ask' (default: ${DEFAULT_CHAT_MODEL})
   -k <n>                 Sources per answer (default: 8, at most 20)
-  --deadline <s>         How long 'ask' waits for members (default: 3)
+  --deadline <s>         'share': how long a question waits for members (default: 3)
   --json                 'ask': print the sources as JSON and skip the answer
   --no-watch             'share': index once, do not watch the folders
   --bootstrap <list>     DHT bootstrap nodes as host:port,host:port (for local testing)

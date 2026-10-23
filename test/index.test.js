@@ -156,6 +156,11 @@ describe('ignore rules', () => {
     expect(isIgnored('docs/public.md', patterns)).toBe(false)
   })
 
+  test('a negated pattern cannot re-expose a denied file', () => {
+    expect(isIgnored('.env', ['!.env'])).toBe(true)
+    expect(isIgnored('certs/server.pem', ['!*.pem', '!certs/server.pem'])).toBe(true)
+  })
+
   test('isIndexable accepts text and code extensions only', () => {
     expect(isIndexable('a.md')).toBe(true)
     expect(isIndexable('a.PY')).toBe(true)

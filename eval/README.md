@@ -73,9 +73,9 @@ Model digest `0a109f422b47e3a30ba2b10eca18548e944e8a23073ee3f3e947efcf3c45e59f`.
 | federated | 0.893 | 0.798 | 0.750 | 0.875 | 0.638 | 0.553 |
 | federated-no-rescore | 0.821 | 0.528 | 0.875 | 0.583 | 0.630 | 0.551 |
 
-Central minus federated, with a paired bootstrap 95% interval over questions (10,000 resamples): recall@5 +0.036 (-0.036 to +0.125), MRR@5 +0.051 (-0.066 to +0.176). Central scored higher on 2 questions for recall and lower on 1. The intervals include zero, so this run does not show a loss from federation, and it cannot rule out a loss of about 0.1 either.
+Central minus federated, with a paired bootstrap 95% interval over questions (10,000 resamples, seeded, from `node eval/compare.js eval/results/2026-10-23-nomic-embed-text-v1.5.json`): recall@5 +0.036 (-0.036 to +0.125), MRR@5 +0.051 (-0.071 to +0.176). Central scored higher on 2 questions for recall and lower on 1. The intervals include zero, so this run does not show a loss from federation, and it cannot rule out a loss of about 0.1 either.
 
-Central minus federated without rescoring: recall@5 +0.107 (0.0 to +0.25), MRR@5 +0.320 (+0.201 to +0.433). Rescoring at the asker accounts for most of the difference between the two federated modes, mainly in rank order.
+Central minus federated without rescoring (`compare.js <file> central federated-no-rescore`): recall@5 +0.107 (+0.000 to +0.232), MRR@5 +0.320 (+0.205 to +0.432). Federated minus federated without rescoring: MRR@5 +0.270 (+0.130 to +0.401). Rescoring at the asker accounts for most of the difference between the two federated modes, mainly in rank order.
 
 Central and federated each missed one question entirely: central missed q21 (the two blind-peer files), federated missed q12 (localdrive's atomic writes, where hyperdrive snippets filled the top 5).
 
