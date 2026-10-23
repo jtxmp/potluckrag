@@ -1,0 +1,40 @@
+{
+  "name": "potluckrag",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Ask questions across your team's documents without moving them, peer-to-peer.",
+  "license": "MIT",
+  "author": "JT (https://github.com/jtxmp)",
+  "type": "module",
+  "bin": {
+    "potluckrag": "bin/potluckrag.js"
+  },
+  "files": [
+    "bin",
+    "src"
+  ],
+  "engines": {
+    "node": ">=22.13"
+  },
+  "scripts": {
+    "test": "vitest run",
+    "eval": "node --no-warnings eval/run.js"
+  },
+  "dependencies": {
+    "hyperswarm": "4.17.2"
+  },
+  "devDependencies": {
+    "hyperdht": "6.34.1",
+    "vitest": "5.0.4"
+  },
+  "pnpm": {
+    "packageExtensions": {
+      "bogon@1.3.0": {
+        "dependencies": {
+          "b4a": "^1.6.0"
+        }
+      }
+    }
+  },
+  "packageManager": "pnpm@10.33.0"
+}
