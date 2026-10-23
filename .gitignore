@@ -38,3 +38,6 @@ eval/results/*.tmp
 
 # local index data
 .potluckrag/
+
+# kept local
+AI-WORKFLOW.md

@@ -207,4 +207,4 @@ MIT. See [LICENSE](LICENSE). The eval corpus in `eval/corpus/` is third-party do
 
 ## How this was built
 
-PotluckRAG was planned and built with Claude Code, with four agents working in parallel against shared interface contracts. [AI-WORKFLOW.md](AI-WORKFLOW.md) describes the process and what went wrong. The product requirements and measured results are in [docs/PRD.md](docs/PRD.md).
+PotluckRAG was planned and built with Claude Code, with four agents working in parallel against shared interface contracts. The product requirements and measured results are in [docs/PRD.md](docs/PRD.md).
