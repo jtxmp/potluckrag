@@ -1,18 +1,21 @@
 // @ts-check
 import { StringDecoder } from 'node:string_decoder'
 
-// Newline-delimited JSON over one Hyperswarm connection (PRD D2).
+// Newline-delimited JSON over one Hyperswarm connection between two team
+// members (docs/contracts.md, "Wire protocol"). Every member is both asker
+// and answerer.
 //
-// provider -> consumer   { t: 'hello', models: string[] }
-// consumer -> provider   { t: 'req', id, method, path, body? }
-// consumer -> provider   { t: 'cancel', id }
-// provider -> consumer   { t: 'head', id, status, contentType }
-// provider -> consumer   { t: 'chunk', id, d }        d = base64 bytes
-// provider -> consumer   { t: 'end', id }
-// provider -> consumer   { t: 'err', id, status, message }
+// both ways         { t: 'hello', name, chunks, embedModel }
+// asker  -> member  { t: 'search', id, q, k }
+// member -> asker   { t: 'hits', id, hits: [{ path, startLine, endLine, title, text }] }
+// member -> asker   { t: 'err', id, status, message }
+//
+// The answering member enforces q <= 2000 characters, k clamped to 1..20,
+// text <= 2000 characters, 10 searches per member per 10 s and 4 at once
+// (429 beyond either). Scores are never sent.
 
-// A single message larger than this ends the connection. Request bodies are
-// capped well below it by the consumer.
+// A single message larger than this ends the connection. A full answer
+// (20 hits of 2000 characters) stays far below it.
 export const MAX_MESSAGE_BYTES = 4 * 1024 * 1024
 
 /**

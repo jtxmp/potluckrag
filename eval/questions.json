@@ -1,0 +1,188 @@
+[
+  {
+    "id": "q01",
+    "question": "How do I read a block from the log only if it is already on this machine, without waiting for peers to send it?",
+    "gold": ["alice/hypercore.md"],
+    "evidence": ["alice/hypercore.md:138-166"]
+  },
+  {
+    "id": "q02",
+    "question": "I want to keep a handful of blocks in local storage and delete everything else. What is the procedure?",
+    "gold": ["alice/hypercore.md"],
+    "evidence": ["alice/hypercore.md:540-578"]
+  },
+  {
+    "id": "q03",
+    "question": "Where can I save per-device settings alongside a log so they never get sent to other peers?",
+    "gold": ["alice/hypercore.md"],
+    "evidence": ["alice/hypercore.md:77-83"]
+  },
+  {
+    "id": "q04",
+    "question": "How do I make a write to the sorted key-value tree do nothing when the stored value is already the same?",
+    "gold": ["alice/hyperbee.md"],
+    "evidence": ["alice/hyperbee.md:111-150"]
+  },
+  {
+    "id": "q05",
+    "question": "Can I split one tree database into separate namespaces for different parts of my app?",
+    "gold": ["alice/hyperbee.md"],
+    "evidence": ["alice/hyperbee.md:364-391"]
+  },
+  {
+    "id": "q06",
+    "question": "When several devices write to a shared multi-writer structure, how is the final order of their entries decided?",
+    "gold": ["alice/autobase.md"],
+    "evidence": ["alice/autobase.md:60-73"]
+  },
+  {
+    "id": "q07",
+    "question": "Can a peer that has not been added as a writer still submit entries, and how do I stop that from being abused?",
+    "gold": ["alice/autobase.md"],
+    "evidence": ["alice/autobase.md:124-151", "alice/autobase.md:320-322"]
+  },
+  {
+    "id": "q08",
+    "question": "An older client gets a message type its handler does not understand. How can the handler halt processing cleanly?",
+    "gold": ["alice/autobase.md"],
+    "evidence": ["alice/autobase.md:266-268", "alice/autobase.md:324-328"]
+  },
+  {
+    "id": "q09",
+    "question": "How do I reclaim disk space used by a file's contents in a shared file system while keeping the file listed?",
+    "gold": ["alice/hyperdrive.md"],
+    "evidence": ["alice/hyperdrive.md:179-201"]
+  },
+  {
+    "id": "q10",
+    "question": "How do I fetch only the files that were added to a shared folder between an older version and now?",
+    "gold": ["alice/hyperdrive.md"],
+    "evidence": ["alice/hyperdrive.md:340-370"]
+  },
+  {
+    "id": "q11",
+    "question": "When I store a large binary object in a log, what piece size is it split into, and can I change it?",
+    "gold": ["alice/hyperblobs.md"],
+    "evidence": ["alice/hyperblobs.md:38-64"]
+  },
+  {
+    "id": "q12",
+    "question": "How do I avoid leaving half-written files on disk when writing through the folder-backed drive API?",
+    "gold": ["alice/localdrive.md"],
+    "evidence": ["alice/localdrive.md:48-65"]
+  },
+  {
+    "id": "q13",
+    "question": "Which backend should I choose for the schema-based database if the data stays on one machine and never syncs?",
+    "gold": ["alice/hyperdb.md"],
+    "evidence": ["alice/hyperdb.md:86-104", "alice/hyperdb.md:110-136"]
+  },
+  {
+    "id": "q14",
+    "question": "How do I refuse incoming connections from peers whose public key I do not trust?",
+    "gold": ["bob/hyperswarm.md", "bob/hyperdht.md"],
+    "evidence": ["bob/hyperswarm.md:41-45", "bob/hyperdht.md:108-123"]
+  },
+  {
+    "id": "q15",
+    "question": "If I stop participating in a topic, are the peer connections I already have closed?",
+    "gold": ["bob/hyperswarm.md"],
+    "evidence": ["bob/hyperswarm.md:100-108"]
+  },
+  {
+    "id": "q16",
+    "question": "My mobile app goes into the background. What should happen to peer networking and to the JavaScript event loop while it is paused?",
+    "gold": ["bob/hyperswarm.md", "carol/bare.md"],
+    "evidence": ["bob/hyperswarm.md:142-152", "carol/bare.md:105-109"]
+  },
+  {
+    "id": "q17",
+    "question": "How do I set up my own isolated peer discovery network instead of using the public entry nodes?",
+    "gold": ["bob/hyperdht.md"],
+    "evidence": ["bob/hyperdht.md:70-85", "bob/hyperdht.md:297-331"]
+  },
+  {
+    "id": "q18",
+    "question": "Can I publish a small signed value to the distributed hash table and overwrite it later?",
+    "gold": ["bob/hyperdht.md"],
+    "evidence": ["bob/hyperdht.md:240-269"]
+  },
+  {
+    "id": "q19",
+    "question": "How do I stop an idle encrypted peer connection from dropping by sending periodic heartbeats?",
+    "gold": ["bob/hyperswarm-secret-stream.md", "bob/hyperdht.md"],
+    "evidence": ["bob/hyperswarm-secret-stream.md:97-122", "bob/hyperdht.md:77"]
+  },
+  {
+    "id": "q20",
+    "question": "How can I run two different custom message protocols over a single peer connection?",
+    "gold": ["bob/protomux.md"],
+    "evidence": ["bob/protomux.md:1-58", "bob/protomux.md:79-110"]
+  },
+  {
+    "id": "q21",
+    "question": "How do I keep my team's data reachable when none of our own devices are online?",
+    "gold": ["bob/blind-peer.md", "bob/blind-peering.md"],
+    "evidence": ["bob/blind-peer.md:2-8", "bob/blind-peering.md:2-43"]
+  },
+  {
+    "id": "q22",
+    "question": "Before serializing values with the binary codec library, how do I work out how big the output buffer must be?",
+    "gold": ["carol/compact-encoding.md"],
+    "evidence": ["carol/compact-encoding.md:15-23", "carol/compact-encoding.md:48-51"]
+  },
+  {
+    "id": "q23",
+    "question": "How do I get an identifier for finding peers that does not reveal the actual public key?",
+    "gold": ["carol/hypercore-crypto.md", "alice/hypercore.md"],
+    "evidence": ["carol/hypercore-crypto.md:57-60", "alice/hypercore.md:639-644"]
+  },
+  {
+    "id": "q24",
+    "question": "Which compile-time setting controls the default heap size cap of the lightweight JavaScript runtime?",
+    "gold": ["carol/bare.md"],
+    "evidence": ["carol/bare.md:149-161"]
+  },
+  {
+    "id": "q25",
+    "question": "How can one npm package point Bare and Node.js at different entry files?",
+    "gold": ["carol/bare-module.md"],
+    "evidence": ["carol/bare-module.md:103-145"]
+  },
+  {
+    "id": "q26",
+    "question": "What commands do I run to publish a peer-to-peer app and let someone else install it?",
+    "gold": ["carol/pear.md"],
+    "evidence": ["carol/pear.md:65-81"]
+  },
+  {
+    "id": "q27",
+    "question": "What storage sits behind an app link on the P2P platform, and how would I read a file from that storage in code?",
+    "gold": ["carol/pear.md", "alice/hyperdrive.md"],
+    "evidence": ["carol/pear.md:8-14", "alice/hyperdrive.md:14-50"]
+  },
+  {
+    "id": "q28",
+    "question": "Which signature algorithm do the key pairs use, both for signing log data and for the encrypted connection handshake?",
+    "gold": ["carol/hypercore-crypto.md", "bob/hyperswarm-secret-stream.md"],
+    "evidence": ["carol/hypercore-crypto.md:12-23", "bob/hyperswarm-secret-stream.md:75", "bob/hyperswarm-secret-stream.md:155-157"]
+  },
+  {
+    "id": "n01",
+    "question": "How do I open a WebRTC data channel to another browser tab?",
+    "gold": [],
+    "evidence": []
+  },
+  {
+    "id": "n02",
+    "question": "How should I configure nginx as a reverse proxy with Let's Encrypt certificates for my app?",
+    "gold": [],
+    "evidence": []
+  },
+  {
+    "id": "n03",
+    "question": "What is the monthly price of the hosted enterprise plan and how is it billed?",
+    "gold": [],
+    "evidence": []
+  }
+]

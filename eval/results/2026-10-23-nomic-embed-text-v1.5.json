@@ -1,0 +1,3765 @@
+{
+  "date": "2026-10-23T02:54:09.027Z",
+  "embedModel": "nomic-embed-text:v1.5",
+  "embedModelDigest": "0a109f422b47e3a30ba2b10eca18548e944e8a23073ee3f3e947efcf3c45e59f",
+  "url": "http://127.0.0.1:11434",
+  "k": 8,
+  "top": 5,
+  "node": "v22.22.2",
+  "corpus": {
+    "central": {
+      "files": 20,
+      "chunks": 585,
+      "roots": [
+        "alice",
+        "bob",
+        "carol"
+      ]
+    },
+    "members": {
+      "alice": {
+        "files": 8,
+        "chunks": 308,
+        "roots": [
+          "alice"
+        ]
+      },
+      "bob": {
+        "files": 6,
+        "chunks": 140,
+        "roots": [
+          "bob"
+        ]
+      },
+      "carol": {
+        "files": 6,
+        "chunks": 137,
+        "roots": [
+          "carol"
+        ]
+      }
+    }
+  },
+  "indexMs": 7736,
+  "totalMs": 18333,
+  "summary": {
+    "central": {
+      "all": {
+        "n": 28,
+        "recallAt5": 0.9285714285714286,
+        "mrrAt5": 0.8482142857142857,
+        "meanTopCosine": 0.6347126998924821
+      },
+      "crossMember": {
+        "n": 4,
+        "recallAt5": 0.75,
+        "mrrAt5": 1,
+        "meanTopCosine": 0.6653439852552072
+      },
+      "noAnswer": {
+        "n": 3,
+        "meanTopCosine": 0.5530959664194924
+      }
+    },
+    "federated": {
+      "all": {
+        "n": 28,
+        "recallAt5": 0.8928571428571429,
+        "mrrAt5": 0.7976190476190476,
+        "meanTopCosine": 0.6384975497360627
+      },
+      "crossMember": {
+        "n": 4,
+        "recallAt5": 0.75,
+        "mrrAt5": 0.875,
+        "meanTopCosine": 0.6743199013143377
+      },
+      "noAnswer": {
+        "n": 3,
+        "meanTopCosine": 0.5530959664194924
+      }
+    },
+    "federated-no-rescore": {
+      "all": {
+        "n": 28,
+        "recallAt5": 0.8214285714285714,
+        "mrrAt5": 0.5279761904761905,
+        "meanTopCosine": 0.6297799534701538
+      },
+      "crossMember": {
+        "n": 4,
+        "recallAt5": 0.875,
+        "mrrAt5": 0.5833333333333334,
+        "meanTopCosine": 0.6655549578896841
+      },
+      "noAnswer": {
+        "n": 3,
+        "meanTopCosine": 0.5506883644641181
+      }
+    }
+  },
+  "questions": [
+    {
+      "id": "q01",
+      "question": "How do I read a block from the log only if it is already on this machine, without waiting for peers to send it?",
+      "gold": [
+        "alice/hypercore.md"
+      ],
+      "crossMember": false,
+      "modes": {
+        "central": {
+          "recall": 1,
+          "rr": 1,
+          "firstRank": 1,
+          "goldRanks": {
+            "alice/hypercore.md": 1
+          },
+          "topCosine": 0.5988540770640093,
+          "top": [
+            {
+              "file": "alice/hypercore.md",
+              "startLine": 664,
+              "endLine": 668
+            },
+            {
+              "file": "alice/hypercore.md",
+              "startLine": 138,
+              "endLine": 166
+            },
+            {
+              "file": "bob/hyperswarm.md",
+              "startLine": 134,
+              "endLine": 140
+            },
+            {
+              "file": "bob/hyperswarm.md",
+              "startLine": 142,
+              "endLine": 146
+            },
+            {
+              "file": "alice/hypercore.md",
+              "startLine": 221,
+              "endLine": 251
+            }
+          ]
+        },
+        "federated": {
+          "recall": 1,
+          "rr": 0.25,
+          "firstRank": 4,
+          "goldRanks": {
+            "alice/hypercore.md": 4
+          },
+          "topCosine": 0.5988540770640093,
+          "top": [
+            {
+              "file": "bob/hyperswarm.md",
+              "startLine": 142,
+              "endLine": 146
+            },
+            {
+              "file": "bob/hyperswarm.md",
+              "startLine": 148,
+              "endLine": 152
+            },
+            {
+              "file": "bob/hyperswarm-secret-stream.md",
+              "startLine": 142,
+              "endLine": 145
+            },
+            {
+              "file": "alice/hypercore.md",
+              "startLine": 664,
+              "endLine": 668
+            },
+            {
+              "file": "alice/hypercore.md",
+              "startLine": 138,
+              "endLine": 166
+            }
+          ]
+        },
+        "federated-no-rescore": {
+          "recall": 1,
+          "rr": 1,
+          "firstRank": 1,
+          "goldRanks": {
+            "alice/hypercore.md": 1
+          },
+          "topCosine": 0.5988540770640093,
+          "top": [
+            {
+              "file": "alice/hypercore.md",
+              "startLine": 138,
+              "endLine": 166
+            },
+            {
+              "file": "bob/hyperswarm.md",
+              "startLine": 142,
+              "endLine": 146
+            },
+            {
+              "file": "carol/bare-module.md",
+              "startLine": 639,
+              "endLine": 645
+            },
+            {
+              "file": "alice/hypercore.md",
+              "startLine": 664,
+              "endLine": 668
+            },
+            {
+              "file": "bob/hyperswarm.md",
+              "startLine": 148,
+              "endLine": 152
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "q02",
+      "question": "I want to keep a handful of blocks in local storage and delete everything else. What is the procedure?",
+      "gold": [
+        "alice/hypercore.md"
+      ],
+      "crossMember": false,
+      "modes": {
+        "central": {
+          "recall": 1,
+          "rr": 1,
+          "firstRank": 1,
+          "goldRanks": {
+            "alice/hypercore.md": 1
+          },
+          "topCosine": 0.5776367589310231,
+          "top": [
+            {
+              "file": "alice/hypercore.md",
+              "startLine": 302,
+              "endLine": 319
+            },
+            {
+              "file": "alice/hypercore.md",
+              "startLine": 576,
+              "endLine": 586
+            },
+            {
+              "file": "alice/hypercore.md",
+              "startLine": 29,
+              "endLine": 43
+            },
+            {
+              "file": "alice/hyperdrive.md",
+              "startLine": 191,
+              "endLine": 201
+            },
+            {
+              "file": "alice/hypercore.md",
+              "startLine": 172,
+              "endLine": 174
+            }
+          ]
+        },
+        "federated": {
+          "recall": 1,
+          "rr": 1,
+          "firstRank": 1,
+          "goldRanks": {
+            "alice/hypercore.md": 1
+          },
+          "topCosine": 0.5776367589310231,
+          "top": [
+            {
+              "file": "alice/hypercore.md",
+              "startLine": 576,
+              "endLine": 586
+            },
+            {
+              "file": "alice/hypercore.md",
+              "startLine": 302,
+              "endLine": 319
+            },
+            {
+              "file": "alice/hyperdrive.md",
+              "startLine": 191,
+              "endLine": 201
+            },
+            {
+              "file": "alice/hyperbee.md",
+              "startLine": 232,
+              "endLine": 236
+            },
+            {
+              "file": "alice/hypercore.md",
+              "startLine": 29,
+              "endLine": 43
+            }
+          ]
+        },
+        "federated-no-rescore": {
+          "recall": 1,
+          "rr": 0.3333333333333333,
+          "firstRank": 3,
+          "goldRanks": {
+            "alice/hypercore.md": 3
+          },
+          "topCosine": 0.5626569298471423,
+          "top": [
+            {
+              "file": "bob/hyperdht.md",
+              "startLine": 64,
+              "endLine": 85
+            },
+            {
+              "file": "carol/pear.md",
+              "startLine": 96,
+              "endLine": 115
+            },
+            {
+              "file": "alice/hypercore.md",
+              "startLine": 302,
+              "endLine": 319
+            },
+            {
+              "file": "bob/hyperswarm-secret-stream.md",
+              "startLine": 106,
+              "endLine": 108
+            },
+            {
+              "file": "carol/bare.md",
+              "startLine": 111,
+              "endLine": 143
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "q03",
+      "question": "Where can I save per-device settings alongside a log so they never get sent to other peers?",
+      "gold": [
+        "alice/hypercore.md"
+      ],
+      "crossMember": false,
+      "modes": {
+        "central": {
+          "recall": 1,
+          "rr": 1,
+          "firstRank": 1,
+          "goldRanks": {
+            "alice/hypercore.md": 1
+          },
+          "topCosine": 0.5930881647724116,
+          "top": [
+            {
+              "file": "alice/hypercore.md",
+              "startLine": 10,
+              "endLine": 19
+            },
+            {
+              "file": "bob/blind-peering.md",
+              "startLine": 14,
+              "endLine": 25
+            },
+            {
+              "file": "bob/hyperswarm.md",
+              "startLine": 142,
+              "endLine": 146
+            },
+            {
+              "file": "bob/hyperswarm.md",
+              "startLine": 148,
+              "endLine": 152
+            },
+            {
+              "file": "bob/hyperswarm.md",
+              "startLine": 92,
+              "endLine": 98
+            }
+          ]
+        },
+        "federated": {
+          "recall": 1,
+          "rr": 0.5,
+          "firstRank": 2,
+          "goldRanks": {
+            "alice/hypercore.md": 2
+          },
+          "topCosine": 0.5930881647724116,
+          "top": [
+            {
+              "file": "bob/hyperswarm.md",
+              "startLine": 142,
+              "endLine": 146
+            },
+            {
+              "file": "alice/hypercore.md",
+              "startLine": 10,
+              "endLine": 19
+            },
+            {
+              "file": "bob/hyperswarm.md",
+              "startLine": 148,
+              "endLine": 152
+            },
+            {
+              "file": "bob/hyperswarm.md",
+              "startLine": 35,
+              "endLine": 45
+            },
+            {
+              "file": "bob/hyperswarm.md",
+              "startLine": 79,
+              "endLine": 90
+            }
+          ]
+        },
+        "federated-no-rescore": {
+          "recall": 1,
+          "rr": 0.5,
+          "firstRank": 2,
+          "goldRanks": {
+            "alice/hypercore.md": 2
+          },
+          "topCosine": 0.5798905144551247,
+          "top": [
+            {
+              "file": "carol/bare.md",
+              "startLine": 82,
+              "endLine": 103
+            },
+            {
+              "file": "alice/hypercore.md",
+              "startLine": 10,
+              "endLine": 19
+            },
+            {
+              "file": "bob/hyperswarm.md",
+              "startLine": 148,
+              "endLine": 152
+            },
+            {
+              "file": "carol/bare.md",
+              "startLine": 1,
+              "endLine": 13
+            },
+            {
+              "file": "alice/autobase.md",
+              "startLine": 71,
+              "endLine": 73
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "q04",
+      "question": "How do I make a write to the sorted key-value tree do nothing when the stored value is already the same?",
+      "gold": [
+        "alice/hyperbee.md"
+      ],
+      "crossMember": false,
+      "modes": {
+        "central": {
+          "recall": 1,
+          "rr": 0.5,
+          "firstRank": 2,
+          "goldRanks": {
+            "alice/hyperbee.md": 2
+          },
+          "topCosine": 0.5888866187118628,
+          "top": [
+            {
+              "file": "alice/hypercore.md",
+              "startLine": 714,
+              "endLine": 718
+            },
+            {
+              "file": "alice/hyperbee.md",
+              "startLine": 56,
+              "endLine": 69
+            },
+            {
+              "file": "alice/hyperbee.md",
+              "startLine": 238,
+              "endLine": 262
+            },
+            {
+              "file": "alice/hyperbee.md",
+              "startLine": 212,
+              "endLine": 216
+            },
+            {
+              "file": "carol/hypercore-crypto.md",
+              "startLine": 21,
+              "endLine": 23
+            }
+          ]
+        },
+        "federated": {
+          "recall": 1,
+          "rr": 1,
+          "firstRank": 1,
+          "goldRanks": {
+            "alice/hyperbee.md": 1
+          },
+          "topCosine": 0.5888866187118628,
+          "top": [
+            {
+              "file": "alice/hyperbee.md",
+              "startLine": 238,
+              "endLine": 262
+            },
+            {
+              "file": "alice/hyperbee.md",
+              "startLine": 56,
+              "endLine": 69
+            },
+            {
+              "file": "carol/hypercore-crypto.md",
+              "startLine": 21,
+              "endLine": 23
+            },
+            {
+              "file": "alice/hyperbee.md",
+              "startLine": 212,
+              "endLine": 216
+            },
+            {
+              "file": "alice/hypercore.md",
+              "startLine": 714,
+              "endLine": 718
+            }
+          ]
+        },
+        "federated-no-rescore": {
+          "recall": 1,
+          "rr": 0.25,
+          "firstRank": 4,
+          "goldRanks": {
+            "alice/hyperbee.md": 4
+          },
+          "topCosine": 0.5861205226593399,
+          "top": [
+            {
+              "file": "alice/hypercore.md",
+              "startLine": 714,
+              "endLine": 718
+            },
+            {
+              "file": "bob/hyperdht.md",
+              "startLine": 254,
+              "endLine": 258
+            },
+            {
+              "file": "carol/bare-module.md",
+              "startLine": 659,
+              "endLine": 663
+            },
+            {
+              "file": "alice/hyperbee.md",
+              "startLine": 56,
+              "endLine": 69
+            },
+            {
+              "file": "bob/hyperdht.md",
+              "startLine": 242,
+              "endLine": 246
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "q05",
+      "question": "Can I split one tree database into separate namespaces for different parts of my app?",
+      "gold": [
+        "alice/hyperbee.md"
+      ],
+      "crossMember": false,
+      "modes": {
+        "central": {
+          "recall": 1,
+          "rr": 0.5,
+          "firstRank": 2,
+          "goldRanks": {
+            "alice/hyperbee.md": 2
+          },
+          "topCosine": 0.6489602743817479,
+          "top": [
+            {
+              "file": "alice/hyperdb.md",
+              "startLine": 342,
+              "endLine": 344
+            },
+            {
+              "file": "alice/hyperbee.md",
+              "startLine": 364,
+              "endLine": 391
+            },
+            {
+              "file": "carol/hypercore-crypto.md",
+              "startLine": 62,
+              "endLine": 65
+            },
+            {
+              "file": "carol/pear.md",
+              "startLine": 96,
+              "endLine": 115
+            },
+            {
+              "file": "carol/bare-module.md",
+              "startLine": 103,
+              "endLine": 147
+            }
+          ]
+        },
+        "federated": {
+          "recall": 1,
+          "rr": 0.5,
+          "firstRank": 2,
+          "goldRanks": {
+            "alice/hyperbee.md": 2
+          },
+          "topCosine": 0.6489602743817479,
+          "top": [
+            {
+              "file": "alice/hyperdb.md",
+              "startLine": 342,
+              "endLine": 344
+            },
+            {
+              "file": "alice/hyperbee.md",
+              "startLine": 364,
+              "endLine": 391
+            },
+            {
+              "file": "carol/hypercore-crypto.md",
+              "startLine": 62,
+              "endLine": 65
+            },
+            {
+              "file": "alice/hyperdb.md",
+              "startLine": 318,
+              "endLine": 326
+            },
+            {
+              "file": "alice/autobase.md",
+              "startLine": 2,
+              "endLine": 4
+            }
+          ]
+        },
+        "federated-no-rescore": {
+          "recall": 0,
+          "rr": 0,
+          "firstRank": null,
+          "goldRanks": {
+            "alice/hyperbee.md": null
+          },
+          "topCosine": 0.6489602743817479,
+          "top": [
+            {
+              "file": "bob/hyperdht.md",
+              "startLine": 64,
+              "endLine": 85
+            },
+            {
+              "file": "carol/pear.md",
+              "startLine": 96,
+              "endLine": 115
+            },
+            {
+              "file": "alice/hyperdb.md",
+              "startLine": 342,
+              "endLine": 344
+            },
+            {
+              "file": "bob/hyperdht.md",
+              "startLine": 275,
+              "endLine": 295
+            },
+            {
+              "file": "carol/hypercore-crypto.md",
+              "startLine": 62,
+              "endLine": 65
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "q06",
+      "question": "When several devices write to a shared multi-writer structure, how is the final order of their entries decided?",
+      "gold": [
+        "alice/autobase.md"
+      ],
+      "crossMember": false,
+      "modes": {
+        "central": {
+          "recall": 1,
+          "rr": 1,
+          "firstRank": 1,
+          "goldRanks": {
+            "alice/autobase.md": 1
+          },
+          "topCosine": 0.6332443520758497,
+          "top": [
+            {
+              "file": "alice/autobase.md",
+              "startLine": 60,
+              "endLine": 65
+            },
+            {
+              "file": "alice/autobase.md",
+              "startLine": 2,
+              "endLine": 4
+            },
+            {
+              "file": "alice/autobase.md",
+              "startLine": 224,
+              "endLine": 226
+            },
+            {
+              "file": "alice/autobase.md",
+              "startLine": 71,
+              "endLine": 73
+            },
+            {
+              "file": "alice/autobase.md",
+              "startLine": 67,
+              "endLine": 69
+            }
+          ]
+        },
+        "federated": {
+          "recall": 1,
+          "rr": 1,
+          "firstRank": 1,
+          "goldRanks": {
+            "alice/autobase.md": 1
+          },
+          "topCosine": 0.6332443520758497,
+          "top": [
+            {
+              "file": "alice/autobase.md",
+              "startLine": 2,
+              "endLine": 4
+            },
+            {
+              "file": "alice/autobase.md",
+              "startLine": 60,
+              "endLine": 65
+            },
+            {
+              "file": "alice/autobase.md",
+              "startLine": 224,
+              "endLine": 226
+            },
+            {
+              "file": "alice/autobase.md",
+              "startLine": 67,
+              "endLine": 69
+            },
+            {
+              "file": "alice/autobase.md",
+              "startLine": 71,
+              "endLine": 73
+            }
+          ]
+        },
+        "federated-no-rescore": {
+          "recall": 1,
+          "rr": 0.5,
+          "firstRank": 2,
+          "goldRanks": {
+            "alice/autobase.md": 2
+          },
+          "topCosine": 0.6332443520758497,
+          "top": [
+            {
+              "file": "carol/bare-module.md",
+              "startLine": 499,
+              "endLine": 503
+            },
+            {
+              "file": "alice/autobase.md",
+              "startLine": 60,
+              "endLine": 65
+            },
+            {
+              "file": "bob/hyperswarm-secret-stream.md",
+              "startLine": 136,
+              "endLine": 140
+            },
+            {
+              "file": "carol/bare-module.md",
+              "startLine": 582,
+              "endLine": 586
+            },
+            {
+              "file": "alice/autobase.md",
+              "startLine": 2,
+              "endLine": 4
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "q07",
+      "question": "Can a peer that has not been added as a writer still submit entries, and how do I stop that from being abused?",
+      "gold": [
+        "alice/autobase.md"
+      ],
+      "crossMember": false,
+      "modes": {
+        "central": {
+          "recall": 1,
+          "rr": 1,
+          "firstRank": 1,
+          "goldRanks": {
+            "alice/autobase.md": 1
+          },
+          "topCosine": 0.6534975992561743,
+          "top": [
+            {
+              "file": "alice/autobase.md",
+              "startLine": 320,
+              "endLine": 322
+            },
+            {
+              "file": "alice/autobase.md",
+              "startLine": 324,
+              "endLine": 328
+            },
+            {
+              "file": "bob/hyperswarm.md",
+              "startLine": 118,
+              "endLine": 124
+            },
+            {
+              "file": "bob/hyperswarm.md",
+              "startLine": 92,
+              "endLine": 98
+            },
+            {
+              "file": "bob/hyperswarm.md",
+              "startLine": 194,
+              "endLine": 196
+            }
+          ]
+        },
+        "federated": {
+          "recall": 1,
+          "rr": 1,
+          "firstRank": 1,
+          "goldRanks": {
+            "alice/autobase.md": 1
+          },
+          "topCosine": 0.6534975992561743,
+          "top": [
+            {
+              "file": "alice/autobase.md",
+              "startLine": 320,
+              "endLine": 322
+            },
+            {
+              "file": "bob/hyperswarm.md",
+              "startLine": 110,
+              "endLine": 116
+            },
+            {
+              "file": "bob/blind-peer.md",
+              "startLine": 2,
+              "endLine": 8
+            },
+            {
+              "file": "alice/autobase.md",
+              "startLine": 324,
+              "endLine": 328
+            },
+            {
+              "file": "bob/hyperswarm.md",
+              "startLine": 170,
+              "endLine": 174
+            }
+          ]
+        },
+        "federated-no-rescore": {
+          "recall": 1,
+          "rr": 1,
+          "firstRank": 1,
+          "goldRanks": {
+            "alice/autobase.md": 1
+          },
+          "topCosine": 0.6534975992561743,
+          "top": [
+            {
+              "file": "alice/autobase.md",
+              "startLine": 320,
+              "endLine": 322
+            },
+            {
+              "file": "bob/hyperswarm.md",
+              "startLine": 110,
+              "endLine": 116
+            },
+            {
+              "file": "carol/bare-module.md",
+              "startLine": 488,
+              "endLine": 497
+            },
+            {
+              "file": "alice/autobase.md",
+              "startLine": 324,
+              "endLine": 328
+            },
+            {
+              "file": "bob/hyperswarm.md",
+              "startLine": 92,
+              "endLine": 98
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "q08",
+      "question": "An older client gets a message type its handler does not understand. How can the handler halt processing cleanly?",
+      "gold": [
+        "alice/autobase.md"
+      ],
+      "crossMember": false,
+      "modes": {
+        "central": {
+          "recall": 1,
+          "rr": 1,
+          "firstRank": 1,
+          "goldRanks": {
+            "alice/autobase.md": 1
+          },
+          "topCosine": 0.6167714171647481,
+          "top": [
+            {
+              "file": "alice/autobase.md",
+              "startLine": 324,
+              "endLine": 328
+            },
+            {
+              "file": "bob/protomux.md",
+              "startLine": 144,
+              "endLine": 158
+            },
+            {
+              "file": "alice/hypercore.md",
+              "startLine": 414,
+              "endLine": 425
+            },
+            {
+              "file": "bob/hyperswarm-secret-stream.md",
+              "startLine": 102,
+              "endLine": 104
+            },
+            {
+              "file": "carol/bare.md",
+              "startLine": 105,
+              "endLine": 109
+            }
+          ]
+        },
+        "federated": {
+          "recall": 1,
+          "rr": 0.3333333333333333,
+          "firstRank": 3,
+          "goldRanks": {
+            "alice/autobase.md": 3
+          },
+          "topCosine": 0.6167714171647481,
+          "top": [
+            {
+              "file": "carol/bare.md",
+              "startLine": 105,
+              "endLine": 109
+            },
+            {
+              "file": "bob/protomux.md",
+              "startLine": 144,
+              "endLine": 158
+            },
+            {
+              "file": "alice/autobase.md",
+              "startLine": 324,
+              "endLine": 328
+            },
+            {
+              "file": "carol/bare-module.md",
+              "startLine": 556,
+              "endLine": 560
+            },
+            {
+              "file": "bob/hyperswarm-secret-stream.md",
+              "startLine": 120,
+              "endLine": 122
+            }
+          ]
+        },
+        "federated-no-rescore": {
+          "recall": 1,
+          "rr": 0.3333333333333333,
+          "firstRank": 3,
+          "goldRanks": {
+            "alice/autobase.md": 3
+          },
+          "topCosine": 0.6167714171647481,
+          "top": [
+            {
+              "file": "bob/protomux.md",
+              "startLine": 144,
+              "endLine": 158
+            },
+            {
+              "file": "carol/bare-module.md",
+              "startLine": 499,
+              "endLine": 503
+            },
+            {
+              "file": "alice/autobase.md",
+              "startLine": 324,
+              "endLine": 328
+            },
+            {
+              "file": "bob/hyperswarm-secret-stream.md",
+              "startLine": 102,
+              "endLine": 104
+            },
+            {
+              "file": "carol/bare.md",
+              "startLine": 105,
+              "endLine": 109
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "q09",
+      "question": "How do I reclaim disk space used by a file's contents in a shared file system while keeping the file listed?",
+      "gold": [
+        "alice/hyperdrive.md"
+      ],
+      "crossMember": false,
+      "modes": {
+        "central": {
+          "recall": 1,
+          "rr": 0.5,
+          "firstRank": 2,
+          "goldRanks": {
+            "alice/hyperdrive.md": 2
+          },
+          "topCosine": 0.5907573469494574,
+          "top": [
+            {
+              "file": "alice/localdrive.md",
+              "startLine": 135,
+              "endLine": 145
+            },
+            {
+              "file": "alice/hyperdrive.md",
+              "startLine": 227,
+              "endLine": 239
+            },
+            {
+              "file": "alice/localdrive.md",
+              "startLine": 2,
+              "endLine": 8
+            },
+            {
+              "file": "alice/hyperdrive.md",
+              "startLine": 191,
+              "endLine": 201
+            },
+            {
+              "file": "alice/hyperdrive.md",
+              "startLine": 355,
+              "endLine": 370
+            }
+          ]
+        },
+        "federated": {
+          "recall": 1,
+          "rr": 1,
+          "firstRank": 1,
+          "goldRanks": {
+            "alice/hyperdrive.md": 1
+          },
+          "topCosine": 0.5842737112784951,
+          "top": [
+            {
+              "file": "alice/hyperdrive.md",
+              "startLine": 319,
+              "endLine": 334
+            },
+            {
+              "file": "alice/localdrive.md",
+              "startLine": 135,
+              "endLine": 145
+            },
+            {
+              "file": "alice/hyperdrive.md",
+              "startLine": 227,
+              "endLine": 239
+            },
+            {
+              "file": "alice/hyperdrive.md",
+              "startLine": 179,
+              "endLine": 189
+            },
+            {
+              "file": "alice/hyperdrive.md",
+              "startLine": 2,
+              "endLine": 6
+            }
+          ]
+        },
+        "federated-no-rescore": {
+          "recall": 1,
+          "rr": 0.2,
+          "firstRank": 5,
+          "goldRanks": {
+            "alice/hyperdrive.md": 5
+          },
+          "topCosine": 0.5817856484294065,
+          "top": [
+            {
+              "file": "carol/bare-module.md",
+              "startLine": 499,
+              "endLine": 503
+            },
+            {
+              "file": "alice/localdrive.md",
+              "startLine": 135,
+              "endLine": 145
+            },
+            {
+              "file": "bob/hyperswarm.md",
+              "startLine": 79,
+              "endLine": 90
+            },
+            {
+              "file": "carol/bare-fs.md",
+              "startLine": 2,
+              "endLine": 8
+            },
+            {
+              "file": "alice/hyperdrive.md",
+              "startLine": 227,
+              "endLine": 239
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "q10",
+      "question": "How do I fetch only the files that were added to a shared folder between an older version and now?",
+      "gold": [
+        "alice/hyperdrive.md"
+      ],
+      "crossMember": false,
+      "modes": {
+        "central": {
+          "recall": 1,
+          "rr": 1,
+          "firstRank": 1,
+          "goldRanks": {
+            "alice/hyperdrive.md": 1
+          },
+          "topCosine": 0.5456099900249546,
+          "top": [
+            {
+              "file": "alice/hyperdrive.md",
+              "startLine": 355,
+              "endLine": 370
+            },
+            {
+              "file": "alice/hyperdrive.md",
+              "startLine": 340,
+              "endLine": 353
+            },
+            {
+              "file": "alice/hyperdrive.md",
+              "startLine": 108,
+              "endLine": 110
+            },
+            {
+              "file": "alice/hyperdrive.md",
+              "startLine": 227,
+              "endLine": 239
+            },
+            {
+              "file": "alice/localdrive.md",
+              "startLine": 135,
+              "endLine": 145
+            }
+          ]
+        },
+        "federated": {
+          "recall": 1,
+          "rr": 1,
+          "firstRank": 1,
+          "goldRanks": {
+            "alice/hyperdrive.md": 1
+          },
+          "topCosine": 0.6013540000752454,
+          "top": [
+            {
+              "file": "alice/hyperdrive.md",
+              "startLine": 336,
+              "endLine": 338
+            },
+            {
+              "file": "alice/hyperbee.md",
+              "startLine": 356,
+              "endLine": 358
+            },
+            {
+              "file": "alice/hyperdrive.md",
+              "startLine": 355,
+              "endLine": 370
+            },
+            {
+              "file": "carol/bare-module.md",
+              "startLine": 56,
+              "endLine": 64
+            },
+            {
+              "file": "alice/hyperdrive.md",
+              "startLine": 203,
+              "endLine": 207
+            }
+          ]
+        },
+        "federated-no-rescore": {
+          "recall": 1,
+          "rr": 1,
+          "firstRank": 1,
+          "goldRanks": {
+            "alice/hyperdrive.md": 1
+          },
+          "topCosine": 0.5456099900249546,
+          "top": [
+            {
+              "file": "alice/hyperdrive.md",
+              "startLine": 355,
+              "endLine": 370
+            },
+            {
+              "file": "bob/hyperswarm.md",
+              "startLine": 186,
+              "endLine": 188
+            },
+            {
+              "file": "carol/bare-module.md",
+              "startLine": 665,
+              "endLine": 667
+            },
+            {
+              "file": "alice/hyperdrive.md",
+              "startLine": 108,
+              "endLine": 110
+            },
+            {
+              "file": "bob/hyperswarm.md",
+              "startLine": 79,
+              "endLine": 90
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "q11",
+      "question": "When I store a large binary object in a log, what piece size is it split into, and can I change it?",
+      "gold": [
+        "alice/hyperblobs.md"
+      ],
+      "crossMember": false,
+      "modes": {
+        "central": {
+          "recall": 1,
+          "rr": 1,
+          "firstRank": 1,
+          "goldRanks": {
+            "alice/hyperblobs.md": 1
+          },
+          "topCosine": 0.6706534487274389,
+          "top": [
+            {
+              "file": "alice/hyperblobs.md",
+              "startLine": 50,
+              "endLine": 64
+            },
+            {
+              "file": "alice/hyperblobs.md",
+              "startLine": 38,
+              "endLine": 48
+            },
+            {
+              "file": "alice/mirror-drive.md",
+              "startLine": 10,
+              "endLine": 41
+            },
+            {
+              "file": "alice/hyperblobs.md",
+              "startLine": 2,
+              "endLine": 24
+            },
+            {
+              "file": "carol/bare-module.md",
+              "startLine": 582,
+              "endLine": 586
+            }
+          ]
+        },
+        "federated": {
+          "recall": 1,
+          "rr": 1,
+          "firstRank": 1,
+          "goldRanks": {
+            "alice/hyperblobs.md": 1
+          },
+          "topCosine": 0.6706534487274389,
+          "top": [
+            {
+              "file": "alice/hyperblobs.md",
+              "startLine": 50,
+              "endLine": 64
+            },
+            {
+              "file": "alice/hyperblobs.md",
+              "startLine": 38,
+              "endLine": 48
+            },
+            {
+              "file": "alice/hyperblobs.md",
+              "startLine": 2,
+              "endLine": 24
+            },
+            {
+              "file": "alice/hypercore.md",
+              "startLine": 788,
+              "endLine": 790
+            },
+            {
+              "file": "alice/hypercore.md",
+              "startLine": 499,
+              "endLine": 529
+            }
+          ]
+        },
+        "federated-no-rescore": {
+          "recall": 1,
+          "rr": 0.3333333333333333,
+          "firstRank": 3,
+          "goldRanks": {
+            "alice/hyperblobs.md": 3
+          },
+          "topCosine": 0.6706534487274389,
+          "top": [
+            {
+              "file": "bob/hyperswarm.md",
+              "startLine": 142,
+              "endLine": 146
+            },
+            {
+              "file": "carol/compact-encoding.md",
+              "startLine": 78,
+              "endLine": 98
+            },
+            {
+              "file": "alice/hyperblobs.md",
+              "startLine": 50,
+              "endLine": 64
+            },
+            {
+              "file": "bob/protomux.md",
+              "startLine": 10,
+              "endLine": 58
+            },
+            {
+              "file": "carol/compact-encoding.md",
+              "startLine": 38,
+              "endLine": 46
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "q12",
+      "question": "How do I avoid leaving half-written files on disk when writing through the folder-backed drive API?",
+      "gold": [
+        "alice/localdrive.md"
+      ],
+      "crossMember": false,
+      "modes": {
+        "central": {
+          "recall": 1,
+          "rr": 0.25,
+          "firstRank": 4,
+          "goldRanks": {
+            "alice/localdrive.md": 4
+          },
+          "topCosine": 0.6226060449486287,
+          "top": [
+            {
+              "file": "alice/hyperdrive.md",
+              "startLine": 74,
+              "endLine": 76
+            },
+            {
+              "file": "alice/hyperdrive.md",
+              "startLine": 306,
+              "endLine": 317
+            },
+            {
+              "file": "alice/hyperdrive.md",
+              "startLine": 355,
+              "endLine": 370
+            },
+            {
+              "file": "alice/localdrive.md",
+              "startLine": 147,
+              "endLine": 149
+            },
+            {
+              "file": "alice/hyperdrive.md",
+              "startLine": 241,
+              "endLine": 251
+            }
+          ]
+        },
+        "federated": {
+          "recall": 0,
+          "rr": 0,
+          "firstRank": null,
+          "goldRanks": {
+            "alice/localdrive.md": null
+          },
+          "topCosine": 0.6226060449486287,
+          "top": [
+            {
+              "file": "alice/hyperdrive.md",
+              "startLine": 74,
+              "endLine": 76
+            },
+            {
+              "file": "alice/hyperdrive.md",
+              "startLine": 100,
+              "endLine": 102
+            },
+            {
+              "file": "alice/hyperdrive.md",
+              "startLine": 355,
+              "endLine": 370
+            },
+            {
+              "file": "alice/hyperdrive.md",
+              "startLine": 66,
+              "endLine": 68
+            },
+            {
+              "file": "alice/hyperdrive.md",
+              "startLine": 306,
+              "endLine": 317
+            }
+          ]
+        },
+        "federated-no-rescore": {
+          "recall": 0,
+          "rr": 0,
+          "firstRank": null,
+          "goldRanks": {
+            "alice/localdrive.md": null
+          },
+          "topCosine": 0.6226060449486287,
+          "top": [
+            {
+              "file": "carol/bare-fs.md",
+              "startLine": 2,
+              "endLine": 8
+            },
+            {
+              "file": "alice/hyperdrive.md",
+              "startLine": 74,
+              "endLine": 76
+            },
+            {
+              "file": "bob/hyperswarm-secret-stream.md",
+              "startLine": 4,
+              "endLine": 10
+            },
+            {
+              "file": "carol/bare-module.md",
+              "startLine": 499,
+              "endLine": 503
+            },
+            {
+              "file": "alice/hyperdrive.md",
+              "startLine": 306,
+              "endLine": 317
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "q13",
+      "question": "Which backend should I choose for the schema-based database if the data stays on one machine and never syncs?",
+      "gold": [
+        "alice/hyperdb.md"
+      ],
+      "crossMember": false,
+      "modes": {
+        "central": {
+          "recall": 1,
+          "rr": 1,
+          "firstRank": 1,
+          "goldRanks": {
+            "alice/hyperdb.md": 1
+          },
+          "topCosine": 0.5345416542368274,
+          "top": [
+            {
+              "file": "alice/hyperdb.md",
+              "startLine": 328,
+              "endLine": 334
+            },
+            {
+              "file": "alice/hypercore.md",
+              "startLine": 10,
+              "endLine": 19
+            },
+            {
+              "file": "alice/autobase.md",
+              "startLine": 224,
+              "endLine": 226
+            },
+            {
+              "file": "carol/bare.md",
+              "startLine": 173,
+              "endLine": 182
+            },
+            {
+              "file": "alice/hyperdb.md",
+              "startLine": 318,
+              "endLine": 326
+            }
+          ]
+        },
+        "federated": {
+          "recall": 1,
+          "rr": 1,
+          "firstRank": 1,
+          "goldRanks": {
+            "alice/hyperdb.md": 1
+          },
+          "topCosine": 0.5345416542368274,
+          "top": [
+            {
+              "file": "alice/hyperdb.md",
+              "startLine": 328,
+              "endLine": 334
+            },
+            {
+              "file": "alice/hyperdb.md",
+              "startLine": 110,
+              "endLine": 123
+            },
+            {
+              "file": "alice/hyperdb.md",
+              "startLine": 318,
+              "endLine": 326
+            },
+            {
+              "file": "alice/hyperdb.md",
+              "startLine": 352,
+              "endLine": 392
+            },
+            {
+              "file": "alice/autobase.md",
+              "startLine": 224,
+              "endLine": 226
+            }
+          ]
+        },
+        "federated-no-rescore": {
+          "recall": 1,
+          "rr": 1,
+          "firstRank": 1,
+          "goldRanks": {
+            "alice/hyperdb.md": 1
+          },
+          "topCosine": 0.5345416542368274,
+          "top": [
+            {
+              "file": "alice/hyperdb.md",
+              "startLine": 328,
+              "endLine": 334
+            },
+            {
+              "file": "bob/blind-peering.md",
+              "startLine": 67,
+              "endLine": 73
+            },
+            {
+              "file": "carol/bare.md",
+              "startLine": 15,
+              "endLine": 23
+            },
+            {
+              "file": "alice/hypercore.md",
+              "startLine": 10,
+              "endLine": 19
+            },
+            {
+              "file": "bob/blind-peering.md",
+              "startLine": 45,
+              "endLine": 47
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "q14",
+      "question": "How do I refuse incoming connections from peers whose public key I do not trust?",
+      "gold": [
+        "bob/hyperswarm.md",
+        "bob/hyperdht.md"
+      ],
+      "crossMember": false,
+      "modes": {
+        "central": {
+          "recall": 1,
+          "rr": 1,
+          "firstRank": 1,
+          "goldRanks": {
+            "bob/hyperswarm.md": 2,
+            "bob/hyperdht.md": 1
+          },
+          "topCosine": 0.6952268186912925,
+          "top": [
+            {
+              "file": "bob/hyperdht.md",
+              "startLine": 201,
+              "endLine": 220
+            },
+            {
+              "file": "bob/hyperswarm.md",
+              "startLine": 182,
+              "endLine": 184
+            },
+            {
+              "file": "bob/hyperdht.md",
+              "startLine": 191,
+              "endLine": 193
+            },
+            {
+              "file": "bob/hyperdht.md",
+              "startLine": 108,
+              "endLine": 125
+            },
+            {
+              "file": "bob/hyperswarm.md",
+              "startLine": 194,
+              "endLine": 196
+            }
+          ]
+        },
+        "federated": {
+          "recall": 1,
+          "rr": 1,
+          "firstRank": 1,
+          "goldRanks": {
+            "bob/hyperswarm.md": 1,
+            "bob/hyperdht.md": 3
+          },
+          "topCosine": 0.6952268186912925,
+          "top": [
+            {
+              "file": "bob/hyperswarm.md",
+              "startLine": 194,
+              "endLine": 196
+            },
+            {
+              "file": "bob/hyperswarm.md",
+              "startLine": 182,
+              "endLine": 184
+            },
+            {
+              "file": "bob/hyperdht.md",
+              "startLine": 191,
+              "endLine": 193
+            },
+            {
+              "file": "bob/blind-peer.md",
+              "startLine": 20,
+              "endLine": 50
+            },
+            {
+              "file": "bob/hyperdht.md",
+              "startLine": 201,
+              "endLine": 220
+            }
+          ]
+        },
+        "federated-no-rescore": {
+          "recall": 1,
+          "rr": 1,
+          "firstRank": 1,
+          "goldRanks": {
+            "bob/hyperswarm.md": 4,
+            "bob/hyperdht.md": 1
+          },
+          "topCosine": 0.6517130321582909,
+          "top": [
+            {
+              "file": "bob/hyperdht.md",
+              "startLine": 201,
+              "endLine": 220
+            },
+            {
+              "file": "carol/hypercore-crypto.md",
+              "startLine": 57,
+              "endLine": 60
+            },
+            {
+              "file": "alice/hypercore.md",
+              "startLine": 772,
+              "endLine": 774
+            },
+            {
+              "file": "bob/hyperswarm.md",
+              "startLine": 182,
+              "endLine": 184
+            },
+            {
+              "file": "carol/pear.md",
+              "startLine": 96,
+              "endLine": 115
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "q15",
+      "question": "If I stop participating in a topic, are the peer connections I already have closed?",
+      "gold": [
+        "bob/hyperswarm.md"
+      ],
+      "crossMember": false,
+      "modes": {
+        "central": {
+          "recall": 1,
+          "rr": 1,
+          "firstRank": 1,
+          "goldRanks": {
+            "bob/hyperswarm.md": 1
+          },
+          "topCosine": 0.7020862491439338,
+          "top": [
+            {
+              "file": "bob/hyperswarm.md",
+              "startLine": 100,
+              "endLine": 108
+            },
+            {
+              "file": "bob/hyperswarm.md",
+              "startLine": 170,
+              "endLine": 174
+            },
+            {
+              "file": "bob/hyperswarm.md",
+              "startLine": 186,
+              "endLine": 188
+            },
+            {
+              "file": "bob/hyperswarm.md",
+              "startLine": 118,
+              "endLine": 124
+            },
+            {
+              "file": "bob/hyperswarm.md",
+              "startLine": 176,
+              "endLine": 180
+            }
+          ]
+        },
+        "federated": {
+          "recall": 1,
+          "rr": 1,
+          "firstRank": 1,
+          "goldRanks": {
+            "bob/hyperswarm.md": 1
+          },
+          "topCosine": 0.7020862491439338,
+          "top": [
+            {
+              "file": "bob/hyperswarm.md",
+              "startLine": 100,
+              "endLine": 108
+            },
+            {
+              "file": "bob/hyperswarm.md",
+              "startLine": 186,
+              "endLine": 188
+            },
+            {
+              "file": "alice/hypercore.md",
+              "startLine": 772,
+              "endLine": 774
+            },
+            {
+              "file": "bob/hyperswarm.md",
+              "startLine": 176,
+              "endLine": 180
+            },
+            {
+              "file": "bob/hyperswarm.md",
+              "startLine": 170,
+              "endLine": 174
+            }
+          ]
+        },
+        "federated-no-rescore": {
+          "recall": 1,
+          "rr": 0.3333333333333333,
+          "firstRank": 3,
+          "goldRanks": {
+            "bob/hyperswarm.md": 3
+          },
+          "topCosine": 0.7020862491439338,
+          "top": [
+            {
+              "file": "carol/pear.md",
+              "startLine": 2,
+              "endLine": 17
+            },
+            {
+              "file": "alice/hypercore.md",
+              "startLine": 772,
+              "endLine": 774
+            },
+            {
+              "file": "bob/hyperswarm.md",
+              "startLine": 100,
+              "endLine": 108
+            },
+            {
+              "file": "carol/pear.md",
+              "startLine": 65,
+              "endLine": 92
+            },
+            {
+              "file": "alice/hypercore.md",
+              "startLine": 768,
+              "endLine": 770
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "q16",
+      "question": "My mobile app goes into the background. What should happen to peer networking and to the JavaScript event loop while it is paused?",
+      "gold": [
+        "bob/hyperswarm.md",
+        "carol/bare.md"
+      ],
+      "crossMember": true,
+      "modes": {
+        "central": {
+          "recall": 1,
+          "rr": 1,
+          "firstRank": 1,
+          "goldRanks": {
+            "bob/hyperswarm.md": 2,
+            "carol/bare.md": 1
+          },
+          "topCosine": 0.6698310392631048,
+          "top": [
+            {
+              "file": "carol/bare.md",
+              "startLine": 105,
+              "endLine": 109
+            },
+            {
+              "file": "bob/hyperswarm.md",
+              "startLine": 142,
+              "endLine": 146
+            },
+            {
+              "file": "carol/pear.md",
+              "startLine": 65,
+              "endLine": 92
+            },
+            {
+              "file": "bob/hyperswarm.md",
+              "startLine": 134,
+              "endLine": 140
+            },
+            {
+              "file": "alice/autobase.md",
+              "startLine": 228,
+              "endLine": 230
+            }
+          ]
+        },
+        "federated": {
+          "recall": 1,
+          "rr": 1,
+          "firstRank": 1,
+          "goldRanks": {
+            "bob/hyperswarm.md": 1,
+            "carol/bare.md": 3
+          },
+          "topCosine": 0.6698310392631048,
+          "top": [
+            {
+              "file": "bob/hyperswarm.md",
+              "startLine": 142,
+              "endLine": 146
+            },
+            {
+              "file": "bob/hyperswarm.md",
+              "startLine": 176,
+              "endLine": 180
+            },
+            {
+              "file": "carol/bare.md",
+              "startLine": 105,
+              "endLine": 109
+            },
+            {
+              "file": "bob/hyperswarm.md",
+              "startLine": 148,
+              "endLine": 152
+            },
+            {
+              "file": "carol/bare.md",
+              "startLine": 1,
+              "endLine": 13
+            }
+          ]
+        },
+        "federated-no-rescore": {
+          "recall": 1,
+          "rr": 0.5,
+          "firstRank": 2,
+          "goldRanks": {
+            "bob/hyperswarm.md": 2,
+            "carol/bare.md": 3
+          },
+          "topCosine": 0.6698310392631048,
+          "top": [
+            {
+              "file": "alice/hypercore.md",
+              "startLine": 753,
+              "endLine": 758
+            },
+            {
+              "file": "bob/hyperswarm.md",
+              "startLine": 142,
+              "endLine": 146
+            },
+            {
+              "file": "carol/bare.md",
+              "startLine": 105,
+              "endLine": 109
+            },
+            {
+              "file": "alice/hyperdrive.md",
+              "startLine": 391,
+              "endLine": 395
+            },
+            {
+              "file": "bob/hyperswarm.md",
+              "startLine": 134,
+              "endLine": 140
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "q17",
+      "question": "How do I set up my own isolated peer discovery network instead of using the public entry nodes?",
+      "gold": [
+        "bob/hyperdht.md"
+      ],
+      "crossMember": false,
+      "modes": {
+        "central": {
+          "recall": 1,
+          "rr": 1,
+          "firstRank": 1,
+          "goldRanks": {
+            "bob/hyperdht.md": 1
+          },
+          "topCosine": 0.6446701935636737,
+          "top": [
+            {
+              "file": "bob/hyperdht.md",
+              "startLine": 297,
+              "endLine": 331
+            },
+            {
+              "file": "bob/hyperdht.md",
+              "startLine": 172,
+              "endLine": 185
+            },
+            {
+              "file": "bob/hyperdht.md",
+              "startLine": 102,
+              "endLine": 104
+            },
+            {
+              "file": "bob/hyperdht.md",
+              "startLine": 64,
+              "endLine": 85
+            },
+            {
+              "file": "bob/hyperdht.md",
+              "startLine": 201,
+              "endLine": 220
+            }
+          ]
+        },
+        "federated": {
+          "recall": 1,
+          "rr": 1,
+          "firstRank": 1,
+          "goldRanks": {
+            "bob/hyperdht.md": 1
+          },
+          "topCosine": 0.6446701935636737,
+          "top": [
+            {
+              "file": "bob/hyperdht.md",
+              "startLine": 297,
+              "endLine": 331
+            },
+            {
+              "file": "bob/hyperswarm.md",
+              "startLine": 79,
+              "endLine": 90
+            },
+            {
+              "file": "bob/hyperdht.md",
+              "startLine": 199,
+              "endLine": 199
+            },
+            {
+              "file": "bob/hyperdht.md",
+              "startLine": 172,
+              "endLine": 185
+            },
+            {
+              "file": "bob/blind-peer.md",
+              "startLine": 20,
+              "endLine": 50
+            }
+          ]
+        },
+        "federated-no-rescore": {
+          "recall": 1,
+          "rr": 1,
+          "firstRank": 1,
+          "goldRanks": {
+            "bob/hyperdht.md": 1
+          },
+          "topCosine": 0.6446701935636737,
+          "top": [
+            {
+              "file": "bob/hyperdht.md",
+              "startLine": 297,
+              "endLine": 331
+            },
+            {
+              "file": "carol/hypercore-crypto.md",
+              "startLine": 57,
+              "endLine": 60
+            },
+            {
+              "file": "alice/hyperdrive.md",
+              "startLine": 391,
+              "endLine": 395
+            },
+            {
+              "file": "bob/hyperdht.md",
+              "startLine": 172,
+              "endLine": 185
+            },
+            {
+              "file": "carol/bare.md",
+              "startLine": 1,
+              "endLine": 13
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "q18",
+      "question": "Can I publish a small signed value to the distributed hash table and overwrite it later?",
+      "gold": [
+        "bob/hyperdht.md"
+      ],
+      "crossMember": false,
+      "modes": {
+        "central": {
+          "recall": 1,
+          "rr": 1,
+          "firstRank": 1,
+          "goldRanks": {
+            "bob/hyperdht.md": 1
+          },
+          "topCosine": 0.5793354477377685,
+          "top": [
+            {
+              "file": "bob/hyperdht.md",
+              "startLine": 222,
+              "endLine": 232
+            },
+            {
+              "file": "bob/hyperdht.md",
+              "startLine": 242,
+              "endLine": 246
+            },
+            {
+              "file": "carol/hypercore-crypto.md",
+              "startLine": 21,
+              "endLine": 23
+            },
+            {
+              "file": "carol/hypercore-crypto.md",
+              "startLine": 25,
+              "endLine": 27
+            },
+            {
+              "file": "carol/pear.md",
+              "startLine": 65,
+              "endLine": 92
+            }
+          ]
+        },
+        "federated": {
+          "recall": 1,
+          "rr": 0.25,
+          "firstRank": 4,
+          "goldRanks": {
+            "bob/hyperdht.md": 4
+          },
+          "topCosine": 0.6213404498726273,
+          "top": [
+            {
+              "file": "alice/autobase.md",
+              "startLine": 177,
+              "endLine": 179
+            },
+            {
+              "file": "carol/hypercore-crypto.md",
+              "startLine": 62,
+              "endLine": 65
+            },
+            {
+              "file": "alice/autobase.md",
+              "startLine": 71,
+              "endLine": 73
+            },
+            {
+              "file": "bob/hyperdht.md",
+              "startLine": 222,
+              "endLine": 232
+            },
+            {
+              "file": "carol/hypercore-crypto.md",
+              "startLine": 21,
+              "endLine": 23
+            }
+          ]
+        },
+        "federated-no-rescore": {
+          "recall": 1,
+          "rr": 0.3333333333333333,
+          "firstRank": 3,
+          "goldRanks": {
+            "bob/hyperdht.md": 3
+          },
+          "topCosine": 0.5825164698111255,
+          "top": [
+            {
+              "file": "carol/hypercore-crypto.md",
+              "startLine": 21,
+              "endLine": 23
+            },
+            {
+              "file": "alice/autobase.md",
+              "startLine": 71,
+              "endLine": 73
+            },
+            {
+              "file": "bob/hyperdht.md",
+              "startLine": 222,
+              "endLine": 232
+            },
+            {
+              "file": "carol/hypercore-crypto.md",
+              "startLine": 25,
+              "endLine": 27
+            },
+            {
+              "file": "alice/hyperdrive.md",
+              "startLine": 90,
+              "endLine": 94
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "q19",
+      "question": "How do I stop an idle encrypted peer connection from dropping by sending periodic heartbeats?",
+      "gold": [
+        "bob/hyperswarm-secret-stream.md",
+        "bob/hyperdht.md"
+      ],
+      "crossMember": false,
+      "modes": {
+        "central": {
+          "recall": 1,
+          "rr": 1,
+          "firstRank": 1,
+          "goldRanks": {
+            "bob/hyperswarm-secret-stream.md": 1,
+            "bob/hyperdht.md": 4
+          },
+          "topCosine": 0.6832050893835023,
+          "top": [
+            {
+              "file": "bob/hyperswarm-secret-stream.md",
+              "startLine": 102,
+              "endLine": 104
+            },
+            {
+              "file": "bob/hyperswarm.md",
+              "startLine": 118,
+              "endLine": 124
+            },
+            {
+              "file": "bob/hyperswarm.md",
+              "startLine": 65,
+              "endLine": 71
+            },
+            {
+              "file": "bob/hyperdht.md",
+              "startLine": 108,
+              "endLine": 125
+            },
+            {
+              "file": "bob/hyperdht.md",
+              "startLine": 187,
+              "endLine": 189
+            }
+          ]
+        },
+        "federated": {
+          "recall": 0.5,
+          "rr": 1,
+          "firstRank": 1,
+          "goldRanks": {
+            "bob/hyperswarm-secret-stream.md": 1,
+            "bob/hyperdht.md": null
+          },
+          "topCosine": 0.6832050893835023,
+          "top": [
+            {
+              "file": "bob/hyperswarm-secret-stream.md",
+              "startLine": 102,
+              "endLine": 104
+            },
+            {
+              "file": "alice/hypercore.md",
+              "startLine": 772,
+              "endLine": 774
+            },
+            {
+              "file": "bob/hyperswarm.md",
+              "startLine": 118,
+              "endLine": 124
+            },
+            {
+              "file": "bob/hyperswarm.md",
+              "startLine": 65,
+              "endLine": 71
+            },
+            {
+              "file": "alice/hypercore.md",
+              "startLine": 768,
+              "endLine": 770
+            }
+          ]
+        },
+        "federated-no-rescore": {
+          "recall": 0.5,
+          "rr": 0.5,
+          "firstRank": 2,
+          "goldRanks": {
+            "bob/hyperswarm-secret-stream.md": 2,
+            "bob/hyperdht.md": null
+          },
+          "topCosine": 0.6832050893835023,
+          "top": [
+            {
+              "file": "alice/hypercore.md",
+              "startLine": 772,
+              "endLine": 774
+            },
+            {
+              "file": "bob/hyperswarm-secret-stream.md",
+              "startLine": 102,
+              "endLine": 104
+            },
+            {
+              "file": "carol/bare.md",
+              "startLine": 105,
+              "endLine": 109
+            },
+            {
+              "file": "alice/hypercore.md",
+              "startLine": 768,
+              "endLine": 770
+            },
+            {
+              "file": "bob/hyperswarm.md",
+              "startLine": 118,
+              "endLine": 124
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "q20",
+      "question": "How can I run two different custom message protocols over a single peer connection?",
+      "gold": [
+        "bob/protomux.md"
+      ],
+      "crossMember": false,
+      "modes": {
+        "central": {
+          "recall": 1,
+          "rr": 0.5,
+          "firstRank": 2,
+          "goldRanks": {
+            "bob/protomux.md": 2
+          },
+          "topCosine": 0.6314716984888396,
+          "top": [
+            {
+              "file": "bob/hyperswarm.md",
+              "startLine": 176,
+              "endLine": 180
+            },
+            {
+              "file": "bob/protomux.md",
+              "startLine": 2,
+              "endLine": 8
+            },
+            {
+              "file": "carol/bare-module.md",
+              "startLine": 499,
+              "endLine": 503
+            },
+            {
+              "file": "alice/hypercore.md",
+              "startLine": 414,
+              "endLine": 425
+            },
+            {
+              "file": "bob/hyperswarm.md",
+              "startLine": 79,
+              "endLine": 90
+            }
+          ]
+        },
+        "federated": {
+          "recall": 1,
+          "rr": 1,
+          "firstRank": 1,
+          "goldRanks": {
+            "bob/protomux.md": 1
+          },
+          "topCosine": 0.6314716984888396,
+          "top": [
+            {
+              "file": "bob/protomux.md",
+              "startLine": 2,
+              "endLine": 8
+            },
+            {
+              "file": "carol/bare-module.md",
+              "startLine": 499,
+              "endLine": 503
+            },
+            {
+              "file": "bob/hyperswarm.md",
+              "startLine": 176,
+              "endLine": 180
+            },
+            {
+              "file": "alice/hypercore.md",
+              "startLine": 414,
+              "endLine": 425
+            },
+            {
+              "file": "bob/hyperdht.md",
+              "startLine": 108,
+              "endLine": 125
+            }
+          ]
+        },
+        "federated-no-rescore": {
+          "recall": 1,
+          "rr": 1,
+          "firstRank": 1,
+          "goldRanks": {
+            "bob/protomux.md": 1
+          },
+          "topCosine": 0.6314716984888396,
+          "top": [
+            {
+              "file": "bob/protomux.md",
+              "startLine": 2,
+              "endLine": 8
+            },
+            {
+              "file": "carol/bare-module.md",
+              "startLine": 499,
+              "endLine": 503
+            },
+            {
+              "file": "alice/hypercore.md",
+              "startLine": 414,
+              "endLine": 425
+            },
+            {
+              "file": "bob/hyperswarm.md",
+              "startLine": 176,
+              "endLine": 180
+            },
+            {
+              "file": "carol/bare-module.md",
+              "startLine": 582,
+              "endLine": 586
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "q21",
+      "question": "How do I keep my team's data reachable when none of our own devices are online?",
+      "gold": [
+        "bob/blind-peer.md",
+        "bob/blind-peering.md"
+      ],
+      "crossMember": false,
+      "modes": {
+        "central": {
+          "recall": 0,
+          "rr": 0,
+          "firstRank": null,
+          "goldRanks": {
+            "bob/blind-peer.md": null,
+            "bob/blind-peering.md": null
+          },
+          "topCosine": 0.5755422052343532,
+          "top": [
+            {
+              "file": "alice/hypercore.md",
+              "startLine": 77,
+              "endLine": 83
+            },
+            {
+              "file": "bob/hyperswarm.md",
+              "startLine": 162,
+              "endLine": 164
+            },
+            {
+              "file": "bob/hyperswarm-secret-stream.md",
+              "startLine": 120,
+              "endLine": 122
+            },
+            {
+              "file": "bob/hyperswarm.md",
+              "startLine": 134,
+              "endLine": 140
+            },
+            {
+              "file": "carol/bare-module.md",
+              "startLine": 499,
+              "endLine": 503
+            }
+          ]
+        },
+        "federated": {
+          "recall": 0.5,
+          "rr": 0.5,
+          "firstRank": 2,
+          "goldRanks": {
+            "bob/blind-peer.md": null,
+            "bob/blind-peering.md": 2
+          },
+          "topCosine": 0.5755422052343532,
+          "top": [
+            {
+              "file": "bob/hyperswarm.md",
+              "startLine": 134,
+              "endLine": 140
+            },
+            {
+              "file": "bob/blind-peering.md",
+              "startLine": 2,
+              "endLine": 4
+            },
+            {
+              "file": "alice/hypercore.md",
+              "startLine": 77,
+              "endLine": 83
+            },
+            {
+              "file": "alice/hypercore.md",
+              "startLine": 664,
+              "endLine": 668
+            },
+            {
+              "file": "bob/hyperswarm.md",
+              "startLine": 92,
+              "endLine": 98
+            }
+          ]
+        },
+        "federated-no-rescore": {
+          "recall": 0,
+          "rr": 0,
+          "firstRank": null,
+          "goldRanks": {
+            "bob/blind-peer.md": null,
+            "bob/blind-peering.md": null
+          },
+          "topCosine": 0.5380226984350975,
+          "top": [
+            {
+              "file": "carol/pear.md",
+              "startLine": 96,
+              "endLine": 115
+            },
+            {
+              "file": "alice/hypercore.md",
+              "startLine": 10,
+              "endLine": 19
+            },
+            {
+              "file": "bob/hyperswarm.md",
+              "startLine": 92,
+              "endLine": 98
+            },
+            {
+              "file": "carol/bare.md",
+              "startLine": 1,
+              "endLine": 13
+            },
+            {
+              "file": "alice/hypercore.md",
+              "startLine": 704,
+              "endLine": 708
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "q22",
+      "question": "Before serializing values with the binary codec library, how do I work out how big the output buffer must be?",
+      "gold": [
+        "carol/compact-encoding.md"
+      ],
+      "crossMember": false,
+      "modes": {
+        "central": {
+          "recall": 1,
+          "rr": 1,
+          "firstRank": 1,
+          "goldRanks": {
+            "carol/compact-encoding.md": 1
+          },
+          "topCosine": 0.6429768634500166,
+          "top": [
+            {
+              "file": "carol/compact-encoding.md",
+              "startLine": 48,
+              "endLine": 51
+            },
+            {
+              "file": "carol/compact-encoding.md",
+              "startLine": 10,
+              "endLine": 34
+            },
+            {
+              "file": "alice/hypercore.md",
+              "startLine": 646,
+              "endLine": 650
+            },
+            {
+              "file": "alice/hyperblobs.md",
+              "startLine": 2,
+              "endLine": 24
+            },
+            {
+              "file": "alice/hyperdrive.md",
+              "startLine": 444,
+              "endLine": 446
+            }
+          ]
+        },
+        "federated": {
+          "recall": 1,
+          "rr": 1,
+          "firstRank": 1,
+          "goldRanks": {
+            "carol/compact-encoding.md": 1
+          },
+          "topCosine": 0.6217836183195583,
+          "top": [
+            {
+              "file": "carol/compact-encoding.md",
+              "startLine": 48,
+              "endLine": 51
+            },
+            {
+              "file": "carol/compact-encoding.md",
+              "startLine": 78,
+              "endLine": 98
+            },
+            {
+              "file": "bob/hyperswarm-secret-stream.md",
+              "startLine": 132,
+              "endLine": 134
+            },
+            {
+              "file": "alice/hypercore.md",
+              "startLine": 646,
+              "endLine": 650
+            },
+            {
+              "file": "carol/compact-encoding.md",
+              "startLine": 10,
+              "endLine": 34
+            }
+          ]
+        },
+        "federated-no-rescore": {
+          "recall": 1,
+          "rr": 0.3333333333333333,
+          "firstRank": 3,
+          "goldRanks": {
+            "carol/compact-encoding.md": 3
+          },
+          "topCosine": 0.6217836183195583,
+          "top": [
+            {
+              "file": "alice/hypercore.md",
+              "startLine": 646,
+              "endLine": 650
+            },
+            {
+              "file": "bob/hyperswarm-secret-stream.md",
+              "startLine": 132,
+              "endLine": 134
+            },
+            {
+              "file": "carol/compact-encoding.md",
+              "startLine": 48,
+              "endLine": 51
+            },
+            {
+              "file": "alice/hypercore.md",
+              "startLine": 652,
+              "endLine": 656
+            },
+            {
+              "file": "bob/hyperswarm-secret-stream.md",
+              "startLine": 136,
+              "endLine": 140
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "q23",
+      "question": "How do I get an identifier for finding peers that does not reveal the actual public key?",
+      "gold": [
+        "carol/hypercore-crypto.md",
+        "alice/hypercore.md"
+      ],
+      "crossMember": true,
+      "modes": {
+        "central": {
+          "recall": 0.5,
+          "rr": 1,
+          "firstRank": 1,
+          "goldRanks": {
+            "carol/hypercore-crypto.md": null,
+            "alice/hypercore.md": 1
+          },
+          "topCosine": 0.7176693343187233,
+          "top": [
+            {
+              "file": "alice/hypercore.md",
+              "startLine": 639,
+              "endLine": 644
+            },
+            {
+              "file": "alice/hyperbee.md",
+              "startLine": 97,
+              "endLine": 101
+            },
+            {
+              "file": "bob/hyperswarm.md",
+              "startLine": 182,
+              "endLine": 184
+            },
+            {
+              "file": "bob/hyperswarm.md",
+              "startLine": 55,
+              "endLine": 59
+            },
+            {
+              "file": "bob/blind-peering.md",
+              "startLine": 31,
+              "endLine": 43
+            }
+          ]
+        },
+        "federated": {
+          "recall": 0.5,
+          "rr": 0.5,
+          "firstRank": 2,
+          "goldRanks": {
+            "carol/hypercore-crypto.md": 2,
+            "alice/hypercore.md": null
+          },
+          "topCosine": 0.7176693343187233,
+          "top": [
+            {
+              "file": "bob/hyperswarm.md",
+              "startLine": 182,
+              "endLine": 184
+            },
+            {
+              "file": "carol/hypercore-crypto.md",
+              "startLine": 57,
+              "endLine": 60
+            },
+            {
+              "file": "bob/hyperdht.md",
+              "startLine": 191,
+              "endLine": 193
+            },
+            {
+              "file": "bob/blind-peering.md",
+              "startLine": 31,
+              "endLine": 43
+            },
+            {
+              "file": "bob/hyperswarm.md",
+              "startLine": 55,
+              "endLine": 59
+            }
+          ]
+        },
+        "federated-no-rescore": {
+          "recall": 1,
+          "rr": 0.5,
+          "firstRank": 2,
+          "goldRanks": {
+            "carol/hypercore-crypto.md": 2,
+            "alice/hypercore.md": 3
+          },
+          "topCosine": 0.7176693343187233,
+          "top": [
+            {
+              "file": "bob/hyperswarm.md",
+              "startLine": 182,
+              "endLine": 184
+            },
+            {
+              "file": "carol/hypercore-crypto.md",
+              "startLine": 57,
+              "endLine": 60
+            },
+            {
+              "file": "alice/hypercore.md",
+              "startLine": 639,
+              "endLine": 644
+            },
+            {
+              "file": "bob/blind-peering.md",
+              "startLine": 31,
+              "endLine": 43
+            },
+            {
+              "file": "carol/bare-module.md",
+              "startLine": 499,
+              "endLine": 503
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "q24",
+      "question": "Which compile-time setting controls the default heap size cap of the lightweight JavaScript runtime?",
+      "gold": [
+        "carol/bare.md"
+      ],
+      "crossMember": false,
+      "modes": {
+        "central": {
+          "recall": 1,
+          "rr": 1,
+          "firstRank": 1,
+          "goldRanks": {
+            "carol/bare.md": 1
+          },
+          "topCosine": 0.7038309717862563,
+          "top": [
+            {
+              "file": "carol/bare.md",
+              "startLine": 149,
+              "endLine": 161
+            },
+            {
+              "file": "carol/bare.md",
+              "startLine": 105,
+              "endLine": 109
+            },
+            {
+              "file": "alice/hyperdrive.md",
+              "startLine": 444,
+              "endLine": 446
+            },
+            {
+              "file": "carol/bare.md",
+              "startLine": 1,
+              "endLine": 13
+            },
+            {
+              "file": "alice/hypercore.md",
+              "startLine": 788,
+              "endLine": 790
+            }
+          ]
+        },
+        "federated": {
+          "recall": 1,
+          "rr": 1,
+          "firstRank": 1,
+          "goldRanks": {
+            "carol/bare.md": 1
+          },
+          "topCosine": 0.7038309717862563,
+          "top": [
+            {
+              "file": "carol/bare.md",
+              "startLine": 149,
+              "endLine": 161
+            },
+            {
+              "file": "alice/hyperblobs.md",
+              "startLine": 50,
+              "endLine": 64
+            },
+            {
+              "file": "alice/hyperblobs.md",
+              "startLine": 38,
+              "endLine": 48
+            },
+            {
+              "file": "carol/bare.md",
+              "startLine": 29,
+              "endLine": 31
+            },
+            {
+              "file": "alice/hypercore.md",
+              "startLine": 788,
+              "endLine": 790
+            }
+          ]
+        },
+        "federated-no-rescore": {
+          "recall": 1,
+          "rr": 1,
+          "firstRank": 1,
+          "goldRanks": {
+            "carol/bare.md": 1
+          },
+          "topCosine": 0.7038309717862563,
+          "top": [
+            {
+              "file": "carol/bare.md",
+              "startLine": 149,
+              "endLine": 161
+            },
+            {
+              "file": "alice/hyperblobs.md",
+              "startLine": 50,
+              "endLine": 64
+            },
+            {
+              "file": "bob/protomux.md",
+              "startLine": 62,
+              "endLine": 73
+            },
+            {
+              "file": "carol/bare.md",
+              "startLine": 105,
+              "endLine": 109
+            },
+            {
+              "file": "alice/hyperdrive.md",
+              "startLine": 444,
+              "endLine": 446
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "q25",
+      "question": "How can one npm package point Bare and Node.js at different entry files?",
+      "gold": [
+        "carol/bare-module.md"
+      ],
+      "crossMember": false,
+      "modes": {
+        "central": {
+          "recall": 1,
+          "rr": 0.5,
+          "firstRank": 2,
+          "goldRanks": {
+            "carol/bare-module.md": 2
+          },
+          "topCosine": 0.7036865718307925,
+          "top": [
+            {
+              "file": "carol/bare-fs.md",
+              "startLine": 2,
+              "endLine": 8
+            },
+            {
+              "file": "carol/bare-module.md",
+              "startLine": 2,
+              "endLine": 8
+            },
+            {
+              "file": "carol/bare.md",
+              "startLine": 1,
+              "endLine": 13
+            },
+            {
+              "file": "carol/bare-module.md",
+              "startLine": 270,
+              "endLine": 272
+            },
+            {
+              "file": "carol/bare-module.md",
+              "startLine": 76,
+              "endLine": 86
+            }
+          ]
+        },
+        "federated": {
+          "recall": 1,
+          "rr": 0.5,
+          "firstRank": 2,
+          "goldRanks": {
+            "carol/bare-module.md": 2
+          },
+          "topCosine": 0.7036865718307925,
+          "top": [
+            {
+              "file": "carol/bare-fs.md",
+              "startLine": 2,
+              "endLine": 8
+            },
+            {
+              "file": "carol/bare-module.md",
+              "startLine": 2,
+              "endLine": 8
+            },
+            {
+              "file": "carol/bare.md",
+              "startLine": 1,
+              "endLine": 13
+            },
+            {
+              "file": "carol/bare-module.md",
+              "startLine": 270,
+              "endLine": 272
+            },
+            {
+              "file": "alice/hyperdrive.md",
+              "startLine": 340,
+              "endLine": 353
+            }
+          ]
+        },
+        "federated-no-rescore": {
+          "recall": 0,
+          "rr": 0,
+          "firstRank": null,
+          "goldRanks": {
+            "carol/bare-module.md": null
+          },
+          "topCosine": 0.7036865718307925,
+          "top": [
+            {
+              "file": "alice/localdrive.md",
+              "startLine": 48,
+              "endLine": 67
+            },
+            {
+              "file": "bob/hyperdht.md",
+              "startLine": 275,
+              "endLine": 295
+            },
+            {
+              "file": "carol/bare-fs.md",
+              "startLine": 2,
+              "endLine": 8
+            },
+            {
+              "file": "alice/localdrive.md",
+              "startLine": 2,
+              "endLine": 8
+            },
+            {
+              "file": "bob/hyperswarm-secret-stream.md",
+              "startLine": 4,
+              "endLine": 10
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "q26",
+      "question": "What commands do I run to publish a peer-to-peer app and let someone else install it?",
+      "gold": [
+        "carol/pear.md"
+      ],
+      "crossMember": false,
+      "modes": {
+        "central": {
+          "recall": 1,
+          "rr": 1,
+          "firstRank": 1,
+          "goldRanks": {
+            "carol/pear.md": 1
+          },
+          "topCosine": 0.6734397994131106,
+          "top": [
+            {
+              "file": "carol/pear.md",
+              "startLine": 96,
+              "endLine": 115
+            },
+            {
+              "file": "carol/pear.md",
+              "startLine": 65,
+              "endLine": 92
+            },
+            {
+              "file": "carol/pear.md",
+              "startLine": 117,
+              "endLine": 117
+            },
+            {
+              "file": "bob/blind-peer.md",
+              "startLine": 10,
+              "endLine": 14
+            },
+            {
+              "file": "carol/pear.md",
+              "startLine": 19,
+              "endLine": 49
+            }
+          ]
+        },
+        "federated": {
+          "recall": 1,
+          "rr": 1,
+          "firstRank": 1,
+          "goldRanks": {
+            "carol/pear.md": 1
+          },
+          "topCosine": 0.6734397994131106,
+          "top": [
+            {
+              "file": "carol/pear.md",
+              "startLine": 96,
+              "endLine": 115
+            },
+            {
+              "file": "carol/pear.md",
+              "startLine": 65,
+              "endLine": 92
+            },
+            {
+              "file": "bob/blind-peer.md",
+              "startLine": 16,
+              "endLine": 18
+            },
+            {
+              "file": "bob/blind-peer.md",
+              "startLine": 10,
+              "endLine": 14
+            },
+            {
+              "file": "carol/pear.md",
+              "startLine": 2,
+              "endLine": 17
+            }
+          ]
+        },
+        "federated-no-rescore": {
+          "recall": 1,
+          "rr": 0.5,
+          "firstRank": 2,
+          "goldRanks": {
+            "carol/pear.md": 2
+          },
+          "topCosine": 0.6734397994131106,
+          "top": [
+            {
+              "file": "bob/blind-peer.md",
+              "startLine": 10,
+              "endLine": 14
+            },
+            {
+              "file": "carol/pear.md",
+              "startLine": 96,
+              "endLine": 115
+            },
+            {
+              "file": "alice/hyperblobs.md",
+              "startLine": 26,
+              "endLine": 30
+            },
+            {
+              "file": "bob/blind-peer.md",
+              "startLine": 16,
+              "endLine": 18
+            },
+            {
+              "file": "carol/pear.md",
+              "startLine": 65,
+              "endLine": 92
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "q27",
+      "question": "What storage sits behind an app link on the P2P platform, and how would I read a file from that storage in code?",
+      "gold": [
+        "carol/pear.md",
+        "alice/hyperdrive.md"
+      ],
+      "crossMember": true,
+      "modes": {
+        "central": {
+          "recall": 0.5,
+          "rr": 1,
+          "firstRank": 1,
+          "goldRanks": {
+            "carol/pear.md": 1,
+            "alice/hyperdrive.md": null
+          },
+          "topCosine": 0.5824929133094562,
+          "top": [
+            {
+              "file": "carol/pear.md",
+              "startLine": 96,
+              "endLine": 115
+            },
+            {
+              "file": "carol/pear.md",
+              "startLine": 2,
+              "endLine": 17
+            },
+            {
+              "file": "carol/bare-module.md",
+              "startLine": 499,
+              "endLine": 503
+            },
+            {
+              "file": "carol/bare-module.md",
+              "startLine": 10,
+              "endLine": 38
+            },
+            {
+              "file": "alice/localdrive.md",
+              "startLine": 2,
+              "endLine": 8
+            }
+          ]
+        },
+        "federated": {
+          "recall": 0.5,
+          "rr": 1,
+          "firstRank": 1,
+          "goldRanks": {
+            "carol/pear.md": null,
+            "alice/hyperdrive.md": 1
+          },
+          "topCosine": 0.6108318861506762,
+          "top": [
+            {
+              "file": "alice/hyperdrive.md",
+              "startLine": 241,
+              "endLine": 251
+            },
+            {
+              "file": "alice/hyperdrive.md",
+              "startLine": 425,
+              "endLine": 442
+            },
+            {
+              "file": "alice/hypercore.md",
+              "startLine": 836,
+              "endLine": 838
+            },
+            {
+              "file": "alice/localdrive.md",
+              "startLine": 2,
+              "endLine": 8
+            },
+            {
+              "file": "bob/hyperdht.md",
+              "startLine": 148,
+              "endLine": 160
+            }
+          ]
+        },
+        "federated-no-rescore": {
+          "recall": 0.5,
+          "rr": 1,
+          "firstRank": 1,
+          "goldRanks": {
+            "carol/pear.md": 1,
+            "alice/hyperdrive.md": null
+          },
+          "topCosine": 0.5833368038473635,
+          "top": [
+            {
+              "file": "carol/pear.md",
+              "startLine": 96,
+              "endLine": 115
+            },
+            {
+              "file": "alice/localdrive.md",
+              "startLine": 2,
+              "endLine": 8
+            },
+            {
+              "file": "bob/hyperdht.md",
+              "startLine": 201,
+              "endLine": 220
+            },
+            {
+              "file": "carol/pear.md",
+              "startLine": 2,
+              "endLine": 17
+            },
+            {
+              "file": "alice/hypercore.md",
+              "startLine": 836,
+              "endLine": 838
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "q28",
+      "question": "Which signature algorithm do the key pairs use, both for signing log data and for the encrypted connection handshake?",
+      "gold": [
+        "carol/hypercore-crypto.md",
+        "bob/hyperswarm-secret-stream.md"
+      ],
+      "crossMember": true,
+      "modes": {
+        "central": {
+          "recall": 1,
+          "rr": 1,
+          "firstRank": 1,
+          "goldRanks": {
+            "carol/hypercore-crypto.md": 1,
+            "bob/hyperswarm-secret-stream.md": 3
+          },
+          "topCosine": 0.6913826541295446,
+          "top": [
+            {
+              "file": "carol/hypercore-crypto.md",
+              "startLine": 25,
+              "endLine": 27
+            },
+            {
+              "file": "bob/hyperdht.md",
+              "startLine": 136,
+              "endLine": 142
+            },
+            {
+              "file": "bob/hyperswarm-secret-stream.md",
+              "startLine": 49,
+              "endLine": 79
+            },
+            {
+              "file": "bob/hyperdht.md",
+              "startLine": 17,
+              "endLine": 60
+            },
+            {
+              "file": "alice/autobase.md",
+              "startLine": 71,
+              "endLine": 73
+            }
+          ]
+        },
+        "federated": {
+          "recall": 1,
+          "rr": 1,
+          "firstRank": 1,
+          "goldRanks": {
+            "carol/hypercore-crypto.md": 1,
+            "bob/hyperswarm-secret-stream.md": 5
+          },
+          "topCosine": 0.6989473455248466,
+          "top": [
+            {
+              "file": "carol/hypercore-crypto.md",
+              "startLine": 21,
+              "endLine": 23
+            },
+            {
+              "file": "carol/hypercore-crypto.md",
+              "startLine": 25,
+              "endLine": 27
+            },
+            {
+              "file": "carol/hypercore-crypto.md",
+              "startLine": 10,
+              "endLine": 17
+            },
+            {
+              "file": "bob/hyperdht.md",
+              "startLine": 136,
+              "endLine": 142
+            },
+            {
+              "file": "bob/hyperswarm-secret-stream.md",
+              "startLine": 155,
+              "endLine": 157
+            }
+          ]
+        },
+        "federated-no-rescore": {
+          "recall": 1,
+          "rr": 0.3333333333333333,
+          "firstRank": 3,
+          "goldRanks": {
+            "carol/hypercore-crypto.md": 3,
+            "bob/hyperswarm-secret-stream.md": 5
+          },
+          "topCosine": 0.6913826541295446,
+          "top": [
+            {
+              "file": "alice/hypercore.md",
+              "startLine": 822,
+              "endLine": 834
+            },
+            {
+              "file": "bob/hyperdht.md",
+              "startLine": 136,
+              "endLine": 142
+            },
+            {
+              "file": "carol/hypercore-crypto.md",
+              "startLine": 25,
+              "endLine": 27
+            },
+            {
+              "file": "alice/autobase.md",
+              "startLine": 71,
+              "endLine": 73
+            },
+            {
+              "file": "bob/hyperswarm-secret-stream.md",
+              "startLine": 49,
+              "endLine": 79
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "n01",
+      "question": "How do I open a WebRTC data channel to another browser tab?",
+      "gold": [],
+      "crossMember": false,
+      "modes": {
+        "central": {
+          "recall": null,
+          "rr": 0,
+          "firstRank": null,
+          "goldRanks": {},
+          "topCosine": 0.5854897966800365,
+          "top": [
+            {
+              "file": "bob/protomux.md",
+              "startLine": 140,
+              "endLine": 142
+            },
+            {
+              "file": "bob/protomux.md",
+              "startLine": 112,
+              "endLine": 114
+            },
+            {
+              "file": "bob/protomux.md",
+              "startLine": 172,
+              "endLine": 174
+            },
+            {
+              "file": "bob/protomux.md",
+              "startLine": 79,
+              "endLine": 110
+            },
+            {
+              "file": "bob/protomux.md",
+              "startLine": 176,
+              "endLine": 178
+            }
+          ]
+        },
+        "federated": {
+          "recall": null,
+          "rr": 0,
+          "firstRank": null,
+          "goldRanks": {},
+          "topCosine": 0.5854897966800365,
+          "top": [
+            {
+              "file": "bob/protomux.md",
+              "startLine": 140,
+              "endLine": 142
+            },
+            {
+              "file": "bob/hyperdht.md",
+              "startLine": 201,
+              "endLine": 220
+            },
+            {
+              "file": "bob/protomux.md",
+              "startLine": 112,
+              "endLine": 114
+            },
+            {
+              "file": "carol/bare.md",
+              "startLine": 29,
+              "endLine": 31
+            },
+            {
+              "file": "bob/hyperswarm-secret-stream.md",
+              "startLine": 110,
+              "endLine": 113
+            }
+          ]
+        },
+        "federated-no-rescore": {
+          "recall": null,
+          "rr": 0,
+          "firstRank": null,
+          "goldRanks": {},
+          "topCosine": 0.5854897966800365,
+          "top": [
+            {
+              "file": "bob/protomux.md",
+              "startLine": 140,
+              "endLine": 142
+            },
+            {
+              "file": "carol/bare-module.md",
+              "startLine": 321,
+              "endLine": 331
+            },
+            {
+              "file": "alice/autobase.md",
+              "startLine": 10,
+              "endLine": 58
+            },
+            {
+              "file": "bob/protomux.md",
+              "startLine": 112,
+              "endLine": 114
+            },
+            {
+              "file": "carol/pear.md",
+              "startLine": 96,
+              "endLine": 115
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "n02",
+      "question": "How should I configure nginx as a reverse proxy with Let's Encrypt certificates for my app?",
+      "gold": [],
+      "crossMember": false,
+      "modes": {
+        "central": {
+          "recall": null,
+          "rr": 0,
+          "firstRank": null,
+          "goldRanks": {},
+          "topCosine": 0.5620071167766191,
+          "top": [
+            {
+              "file": "alice/hypercore.md",
+              "startLine": 684,
+              "endLine": 686
+            },
+            {
+              "file": "alice/hypercore.md",
+              "startLine": 822,
+              "endLine": 834
+            },
+            {
+              "file": "bob/hyperdht.md",
+              "startLine": 108,
+              "endLine": 125
+            },
+            {
+              "file": "carol/bare-module.md",
+              "startLine": 222,
+              "endLine": 253
+            },
+            {
+              "file": "bob/hyperswarm-secret-stream.md",
+              "startLine": 4,
+              "endLine": 10
+            }
+          ]
+        },
+        "federated": {
+          "recall": null,
+          "rr": 0,
+          "firstRank": null,
+          "goldRanks": {},
+          "topCosine": 0.5620071167766191,
+          "top": [
+            {
+              "file": "bob/hyperdht.md",
+              "startLine": 108,
+              "endLine": 125
+            },
+            {
+              "file": "bob/hyperdht.md",
+              "startLine": 87,
+              "endLine": 93
+            },
+            {
+              "file": "alice/hypercore.md",
+              "startLine": 688,
+              "endLine": 698
+            },
+            {
+              "file": "carol/compact-encoding.md",
+              "startLine": 164,
+              "endLine": 166
+            },
+            {
+              "file": "alice/hypercore.md",
+              "startLine": 684,
+              "endLine": 686
+            }
+          ]
+        },
+        "federated-no-rescore": {
+          "recall": null,
+          "rr": 0,
+          "firstRank": null,
+          "goldRanks": {},
+          "topCosine": 0.5620071167766191,
+          "top": [
+            {
+              "file": "carol/pear.md",
+              "startLine": 96,
+              "endLine": 115
+            },
+            {
+              "file": "alice/hypercore.md",
+              "startLine": 822,
+              "endLine": 834
+            },
+            {
+              "file": "bob/hyperdht.md",
+              "startLine": 108,
+              "endLine": 125
+            },
+            {
+              "file": "carol/pear.md",
+              "startLine": 19,
+              "endLine": 49
+            },
+            {
+              "file": "alice/hypercore.md",
+              "startLine": 684,
+              "endLine": 686
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "n03",
+      "question": "What is the monthly price of the hosted enterprise plan and how is it billed?",
+      "gold": [],
+      "crossMember": false,
+      "modes": {
+        "central": {
+          "recall": null,
+          "rr": 0,
+          "firstRank": null,
+          "goldRanks": {},
+          "topCosine": 0.5117909858018219,
+          "top": [
+            {
+              "file": "carol/bare-module.md",
+              "startLine": 375,
+              "endLine": 377
+            },
+            {
+              "file": "carol/bare-module.md",
+              "startLine": 499,
+              "endLine": 503
+            },
+            {
+              "file": "carol/bare-module.md",
+              "startLine": 434,
+              "endLine": 436
+            },
+            {
+              "file": "carol/bare-module.md",
+              "startLine": 582,
+              "endLine": 586
+            },
+            {
+              "file": "bob/hyperswarm.md",
+              "startLine": 92,
+              "endLine": 98
+            }
+          ]
+        },
+        "federated": {
+          "recall": null,
+          "rr": 0,
+          "firstRank": null,
+          "goldRanks": {},
+          "topCosine": 0.5117909858018219,
+          "top": [
+            {
+              "file": "bob/hyperswarm.md",
+              "startLine": 92,
+              "endLine": 98
+            },
+            {
+              "file": "alice/hyperdrive.md",
+              "startLine": 2,
+              "endLine": 6
+            },
+            {
+              "file": "carol/bare-module.md",
+              "startLine": 375,
+              "endLine": 377
+            },
+            {
+              "file": "alice/hypercore.md",
+              "startLine": 4,
+              "endLine": 8
+            },
+            {
+              "file": "carol/bare-module.md",
+              "startLine": 434,
+              "endLine": 436
+            }
+          ]
+        },
+        "federated-no-rescore": {
+          "recall": null,
+          "rr": 0,
+          "firstRank": null,
+          "goldRanks": {},
+          "topCosine": 0.5045681799356988,
+          "top": [
+            {
+              "file": "alice/hyperdb.md",
+              "startLine": 318,
+              "endLine": 326
+            },
+            {
+              "file": "bob/hyperdht.md",
+              "startLine": 275,
+              "endLine": 295
+            },
+            {
+              "file": "carol/bare-module.md",
+              "startLine": 375,
+              "endLine": 377
+            },
+            {
+              "file": "alice/hypercore.md",
+              "startLine": 664,
+              "endLine": 668
+            },
+            {
+              "file": "bob/hyperdht.md",
+              "startLine": 102,
+              "endLine": 104
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
