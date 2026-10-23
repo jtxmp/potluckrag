@@ -1,6 +1,7 @@
 # PotluckRAG
 
 [![test](https://github.com/jtxmp/potluckrag/actions/workflows/test.yml/badge.svg)](https://github.com/jtxmp/potluckrag/actions/workflows/test.yml)
+[![npm](https://img.shields.io/npm/v/potluckrag)](https://www.npmjs.com/package/potluckrag)
 [![license: MIT](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 [![node](https://img.shields.io/badge/node-%3E%3D22.13-brightgreen)](package.json)
 
@@ -31,7 +32,9 @@ ollama pull llama3.2:3b
 
 ## Quickstart
 
-Not on npm yet. From a clone, run `pnpm install` and use `node bin/potluckrag.js` in place of `potluckrag`.
+```sh
+pnpm add -g potluckrag      # or: npm install -g potluckrag
+```
 
 1. Each member prints their public key and sends it to the team owner:
 
@@ -60,10 +63,10 @@ Not on npm yet. From a clone, run `pnpm install` and use `node bin/potluckrag.js
 
    Output: the streamed answer, the sources (`[1] alice:notes/runbook.md#L3-12`) and how many members answered.
 
-To run the whole path on one machine with a fake model and sample notes:
+To run the whole path on one machine with a fake model and sample notes, without installing:
 
 ```sh
-node bin/potluckrag.js try
+npx potluckrag try
 ```
 
 ## Commands

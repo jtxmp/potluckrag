@@ -1,10 +1,29 @@
 {
   "name": "potluckrag",
-  "version": "0.0.0",
-  "private": true,
+  "version": "0.1.0",
   "description": "Federated RAG over Hyperswarm. Ask questions across teammates' documents without moving them.",
   "license": "MIT",
   "author": "JT (https://github.com/jtxmp)",
+  "homepage": "https://github.com/jtxmp/potluckrag#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jtxmp/potluckrag.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jtxmp/potluckrag/issues"
+  },
+  "keywords": [
+    "p2p",
+    "peer-to-peer",
+    "hyperswarm",
+    "holepunch",
+    "rag",
+    "retrieval-augmented-generation",
+    "ollama",
+    "local-llm",
+    "privacy",
+    "cli"
+  ],
   "type": "module",
   "bin": {
     "potluckrag": "bin/potluckrag.js"
@@ -18,7 +37,8 @@
   },
   "scripts": {
     "test": "vitest run",
-    "eval": "node --no-warnings eval/run.js"
+    "eval": "node --no-warnings eval/run.js",
+    "prepublishOnly": "pnpm test"
   },
   "dependencies": {
     "hyperswarm": "4.17.2"

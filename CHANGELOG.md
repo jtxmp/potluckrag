@@ -2,7 +2,9 @@
 
 All notable changes are listed here. Versions follow [Semantic Versioning](https://semver.org/).
 
-## Unreleased
+## 0.1.0 (2026-10-23)
+
+First release.
 
 - `potluckrag share` indexes folders into SQLite (full-text and vectors), watches them, and answers team members' searches over Hyperswarm. `potluckrag ask` searches every connected member, re-ranks the passages with the asker's own embedding model and streams a cited answer from an OpenAI-compatible chat server.
 - `potluckrag try` runs two members, sample notes and a fake model on one machine over the real DHT.
